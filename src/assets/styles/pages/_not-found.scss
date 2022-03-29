@@ -1,0 +1,70 @@
+.not-found-container{
+    padding: 140px 0 70px;
+   
+    
+    @include bg-img($image: 'not-found-img-right.svg',
+        $repeat: no-repeat,
+        $size: 430px 570px,
+        $position: top right);
+
+    &:after{
+        content: '';
+    z-index: -1;
+    width: 495px;
+    height: 384px;
+    position: absolute;
+    bottom: 0px;
+    @include bg-img($image: 'not-found-img-left.svg',
+        $repeat: no-repeat,
+        $size: 507px 386px,
+        $position: top right);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: right top;
+    }
+
+    .content{
+        display: flex;
+        justify-content: center;
+
+        &-icon{
+            img{
+                width: 610px;
+            }
+
+            .message-header{
+                text-align: center;
+                padding-top: 30px;
+                font-size: 40px;
+                font-weight: 700;
+                line-height: 46.88px;
+                font-family: 'Roboto';
+            }
+            .message{
+                font-size: 24px;
+                text-align: center;
+                font-weight: 400;
+                padding-top: 30px;
+                line-height: 28.13px;
+                font-family: 'Roboto';
+            }
+            .go-back-btn{
+                display: flex;
+                justify-content: center;
+                padding-top: 30px;
+
+                & > button{
+                   width:160px; 
+                }
+            }
+        }
+    }
+}
+
+.not-found-in-pages{
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 140px 0 70px
+}

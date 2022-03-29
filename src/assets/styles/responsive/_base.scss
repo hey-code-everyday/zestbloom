@@ -1,0 +1,16 @@
+// 1280
+@media (max-width: $screen-md) {
+  html {
+    font-size: 14px;
+  }
+}
+// 960
+@media (max-width: $screen-sm) {
+
+}
+// 600
+@media (max-width: $screen-xs) {
+  html {
+    font-size: 12px;
+  }
+}

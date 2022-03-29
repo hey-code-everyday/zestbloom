@@ -1,0 +1,9 @@
+@media (max-width: $screen-xs) {
+  .tag {
+    &.md {
+      font-size: 0.75rem;
+      line-height: 0.75rem;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+}

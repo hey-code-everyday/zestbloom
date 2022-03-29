@@ -1,0 +1,130 @@
+.MuiButtonBase-root {
+    &.MuiButton-root {
+        font-size: 1rem;
+    }
+
+    &.MuiButton-sizeLarge {
+        padding-top: 13px;
+        padding-bottom: 13px;
+        min-width: 154px;
+    }
+
+    &.MuiButton-outlinedSecondary {
+        border-color: rgba(#000, 0.3);
+
+        &:hover {
+            border-color: rgba(#000, 0.3);
+            background-color: rgba($secondary, 0.1);
+        }
+    }
+
+    &.MuiButton-contained {
+        border: 1px solid;
+
+        &.MuiButton-containedPrimary {
+            border-color: #323fb1;
+        }
+
+        &.MuiButton-containedSecondary {
+            border-color: $secondary;
+            transition: 0.25s;
+
+            &:hover {
+                color: #ccc;
+            }
+        }
+    }
+
+    &.no-hover {
+        background: none !important;
+    }
+
+    &.justify-between {
+        justify-content: space-between;
+        padding-left: 24px;
+    }
+}
+
+.icon-btn {
+    transition: 0.3s !important;
+
+    &.containedSecondary {
+        background-color: $secondary;
+        color: #fff;
+
+        &:hover {
+            background-color: $secondary;
+            color: #ccc;
+        }
+    }
+    &.containedPrimary {
+        background-color: $primary;
+        color: #fff;
+
+        &:hover {
+            background-color: $primary;
+            color: #ccc;
+        }
+    }
+
+    &.md {
+        width: 32px;
+        height: 32px;
+    }
+
+    &.xl {
+        width: 96px;
+        height: 96px;
+    }
+
+    &.rect {
+        border-radius: $br-sm;
+    }
+}
+
+.link {
+    &.primary {
+        color: $primary;
+
+        &:hover {
+            color: $primary-dark;
+        }
+    }
+}
+
+.dark-mode {
+    .btn-load-more {
+        color: white;
+        background: $brand-green;
+        &:hover {
+            background: rgba($color: $brand-green, $alpha: 0.7);
+        }
+    }
+}
+
+.extend-filter-btn {
+    margin: 0;
+    top: 60vh;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    position: fixed !important;
+    border-radius: 0px 100px 100px 0px !important;
+    z-index: 10 !important;
+    color: white !important;
+    background: $brand-green !important;
+}
+
+.whiteBtnHoverGreen {
+    background: white;
+    border-radius: 0.5rem;
+    border: solid 1px gray;
+    outline: none;
+    color: black;
+    padding: 0.5rem 1rem;
+    &:hover {
+        color: white;
+        background: $brand-green;
+        border: solid 1px rgba(gray, 0.5);
+    }
+}

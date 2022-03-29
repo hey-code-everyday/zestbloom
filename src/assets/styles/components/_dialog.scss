@@ -1,0 +1,46 @@
+.MuiDialog-container {
+    .MuiDialog-paper {
+        width: 100%;
+    }
+
+    .MuiDialog-paperWidthSm {
+        max-width: 654px;
+    }
+    .MuiDialog-paperWidthMd {
+        max-width: 900px;
+    }
+
+    .MuiDialog-paperWidthLg {
+        max-width: 1170px;
+    }
+
+    .MuiDialog-paperWidthXs {
+        max-width: 512px;
+    }
+}
+
+.MuiDialog-paper {
+    .MuiDialogTitle-root {
+        text-align: center;
+        padding: 60px 60px 15px;
+
+        &.with-back-btn {
+            position: relative;
+            padding-bottom: 25px;
+
+            .back-btn {
+                @include position($top: 60px, $left: 60px);
+            }
+
+            .MuiTypography-root {
+                padding: 2px 45px;
+            }
+        }
+    }
+
+    .MuiDialogContent-root {
+        &:not(.no-padd) {
+            padding: 0 60px 50px;
+        }
+    }
+}

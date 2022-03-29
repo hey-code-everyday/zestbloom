@@ -1,0 +1,12 @@
+export { default as Home } from './home';
+export { default as Profile } from './profile';
+export { default as ProfileSettings } from './profile/settings';
+export { default as ProfileActivity } from './profile/activity';
+export { default as UploadAsset } from './upload-asset';
+export { default as Marketplace } from './marketplace';
+export { default as Auction } from './auction';
+export { default as Asset } from './asset/singlePage';
+export { default as PostAuction } from './postAuction';
+export { default as AssetEdit } from './asset/editAsset';
+export { default as Faq } from './faq';
+export { default as MakeAnOffer } from './asset/makeAnOffer/makeAnOffer';

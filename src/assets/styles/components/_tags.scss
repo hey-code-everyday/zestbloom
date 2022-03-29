@@ -1,0 +1,97 @@
+.tag {
+    position: absolute;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    z-index: 1;
+    font-family: $font-primary;
+
+    &.relative {
+        position: relative;
+    }
+
+    &.secondary {
+        background: $secondary;
+        color: #fff;
+    }
+
+    &.brand-red {
+        background: $brand-red;
+        color: $secondary;
+    }
+    &.brand-gold {
+        background: $brand-gold;
+        color: $secondary;
+    }
+
+    &.sm {
+        font-size: 0.875rem;
+        line-height: 1rem;
+        padding: 0.25rem 1rem;
+    }
+
+    &.md {
+        font-size: 0.875rem;
+        line-height: 1rem;
+        padding: 0.5rem 1rem;
+    }
+
+    &.top-left-0 {
+        top: 0;
+        left: 0;
+
+        &.rotated {
+            transform: rotate(-90deg) translate(-100%, 0);
+            transform-origin: 0 0;
+        }
+    }
+
+    &.top-left {
+        top: 0;
+        left: 20px;
+
+        &.rotated {
+            transform: rotate(-90deg) translate(-100%, 0);
+            transform-origin: 0 0;
+        }
+    }
+    &.top-left-2 {
+        top: 0;
+        left: 45px;
+
+        &.rotated {
+            transform: rotate(-90deg) translate(-100%, 0);
+            transform-origin: 0 0;
+        }
+    }
+
+    &.top-right {
+        top: 20px;
+        right: 20px;
+    }
+
+    &.bottom-right {
+        bottom: 10px;
+        right: -30px;
+        padding-left: 40px;
+        padding-right: 40px;
+        font-weight: 800;
+        &.rotated {
+            transform: rotate(-45deg);
+            // transform-origin: 0 0;
+        }
+    }
+
+    &.bottom-left {
+        bottom: 10px;
+        left: -40px;
+        padding-left: 40px;
+        padding-right: 40px;
+        font-weight: 800;
+
+        &.rotated {
+            transform: rotate(45deg);
+            // transform-origin: 0 0;
+        }
+    }
+}

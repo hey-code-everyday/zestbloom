@@ -1,0 +1,23 @@
+.price-algo {
+  display: flex;
+  align-items: center;
+  & > img {
+    display: block;
+    height: 12px;
+    margin-left: 2px;
+  }
+  & > span {
+    font-family: $font-primary;
+  }
+}
+.asset-right-center,
+.asset-right-top,
+.publish-asset-modal,
+.preview-description {
+  .price-algo {
+    & > img {
+      height: 22px;
+      margin-right: 5px;
+    }
+  }
+}

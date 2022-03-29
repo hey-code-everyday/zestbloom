@@ -1,0 +1,27 @@
+const apiUrl = window.__RUNTIME_CONFIG__.REACT_APP_API_URL;
+
+export const API_CONFIG = {
+    signup: `${apiUrl}/api/account/signup/`,
+    verifySignup: `${apiUrl}/api/account/signup/verify/`,
+    login: `${apiUrl}/api/account/login/`,
+    loginRefresh: `${apiUrl}/api/account/login/refresh/`,
+    forgotPassword: `${apiUrl}/api/account/password/reset/`,
+    verifyForgotPassword: `${apiUrl}/api/account/password/reset/verify/`,
+    verifiedForgotPassword: `${apiUrl}/api/account/password/reset/verified/`,
+    logout: `${apiUrl}/api/account/logout/`,
+    getUser: `${apiUrl}/api/account/profiles/`,
+    updateProfile: `${apiUrl}/api/account/profiles/`,
+    follow: `${apiUrl}/api/account/profiles/`,
+    changeEmail: `${apiUrl}/api/account/email/change/`,
+    verifyEmail: `${apiUrl}/api/account/email/change/verify/`,
+    changePassword: `${apiUrl}/api/account/password/change/`,
+    addCustomTag: `${apiUrl}/api/account/tags/`,
+    selectTag: `${apiUrl}/api/account/tags/`,
+    getTags: `${apiUrl}/api/account/tags/`,
+    becomeCreator: `${apiUrl}/api/account/become-creator/`,
+    setWalletAccounts: `${apiUrl}/api/wallets/connect/`,
+    setWalletAccountNonLogged: `${apiUrl}/api/wallets/`,
+    getPdfFile: `${apiUrl}/api/static/`,
+    verifyWallets: `${apiUrl}/api/wallets/verify/`,
+    sales: `${apiUrl}/api/contract/sales/`,
+};

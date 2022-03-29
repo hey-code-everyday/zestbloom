@@ -1,0 +1,102 @@
+.footer {
+    margin-top: auto;
+    position: relative;
+
+    background-color: rgba(0, 0, 0, 0.03);
+    &-bg {
+        &:nth-of-type(1),
+        &:nth-of-type(2),
+        &:nth-of-type(3) {
+            position: absolute;
+            width: 50%;
+            height: 25%;
+            border-radius: 99999px;
+            filter: blur(300px);
+            z-index: 0;
+            opacity: 0.75;
+        }
+
+        &:nth-of-type(1) {
+            background-color: #f7ae75;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+
+        &:nth-of-type(2) {
+            background-color: #eb7a7d;
+            top: 50%;
+            left: 0%;
+            // transform: translate(-15%, 0%);
+        }
+
+        &:nth-of-type(3) {
+            background-color: #1b6578;
+            top: 50%;
+            right: -5%;
+        }
+    }
+
+    &-main {
+        padding: 100px 0 65px;
+    }
+    &-nav-item {
+        ul {
+            li {
+                a {
+                    font-family: $font-primary;
+                    font-weight: 500;
+                    font-size: 1rem;
+                    line-height: 1.75rem;
+                    color: $secondary;
+                }
+            }
+        }
+    }
+    &-bottom {
+        padding: 32px 0;
+        background: rgba($secondary, 0.1);
+        font-size: 15px;
+        color: rgba($secondary, 0.6);
+    }
+
+    .copyright {
+        margin-left: 12px;
+    }
+    .footer-icon {
+        background: black;
+        color: white;
+        border-radius: 8px;
+        padding: 3px;
+    }
+}
+.dark-mode {
+    .footer {
+        background: rgba($color: $dark-bg-color, $alpha: 0.7);
+
+        &-bottom {
+            background: rgba($color: $dark-bg-color, $alpha: 1);
+        }
+        &-nav-item {
+            ul {
+                li {
+                    a {
+                        color: white;
+                    }
+                }
+            }
+        }
+        .copyright {
+            color: white;
+        }
+        .MuiBox-root {
+            color: white;
+        }
+        .footer-icon {
+            background: white;
+            color: black;
+            border-radius: 8px;
+            padding: 3px;
+        }
+    }
+}

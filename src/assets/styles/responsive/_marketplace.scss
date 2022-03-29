@@ -1,0 +1,151 @@
+@media (max-width: $screen-sm) {
+    .marketplace-content {
+        .filter-list {
+            margin: 0 -24px;
+            width: calc(100% + 48px);
+            position: relative;
+
+            &:before {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 0;
+                height: 45px;
+                width: 35px;
+                background: linear-gradient(270deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+            }
+        }
+
+        .button-tag-list {
+            width: 100%;
+            overflow-y: hidden;
+            padding: 0 24px;
+
+            & > div {
+                flex-flow: row nowrap;
+            }
+
+            /* width */
+            &::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+            }
+
+            /* Track */
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            /* Handle */
+            &::-webkit-scrollbar-thumb {
+                background: transparent;
+            }
+
+            /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {
+                background: transparent;
+            }
+
+            .button-tag {
+                margin-bottom: 0;
+
+                .text {
+                    white-space: nowrap;
+                }
+            }
+        }
+
+        .filter-sort {
+            width: calc(100% - 48px);
+            justify-content: flex-start;
+            padding: 20px 0;
+            margin: 0 24px;
+
+            .dropdown-btn {
+                margin-left: 0 !important;
+                width: 50%;
+
+                &:not(:last-of-type) {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $screen-xs) {
+    .marketplace-content {
+        .filter-list {
+            margin: 0 -16px;
+            width: calc(100% + 32px);
+        }
+
+        .button-tag-list {
+            padding: 0 16px;
+        }
+
+        .filter-sort {
+            width: 100%;
+            margin: 0;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        .marketplace-section-title {
+            color: #fff;
+        }
+    }
+
+    .marketplace-auction {
+        background-color: #1d1f3b;
+
+        .auction-item {
+            padding: 8px;
+
+            .card-footer {
+                background-color: #000;
+                color: #fff;
+
+                h5 {
+                    font-size: 10px;
+                    color: #fff;
+                }
+
+                .username {
+                    font-size: 10px;
+                }
+
+                .bid-row {
+                    color: #fff;
+                }
+
+                .label,
+                .price-algo {
+                    color: #fff;
+                }
+
+                .num-of-bids,
+                .num-of-bids-value {
+                    color: #fff;
+                }
+
+                button {
+                    color: #fff;
+                    border-color: #fff;
+                }
+            }
+        }
+    }
+
+    .btn-load-more.MuiButton-root {
+        color: #fff;
+        border-color: #fff;
+    }
+}
+
+.marketplace-featured-artworks {
+    & > .MuiContainer-root {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

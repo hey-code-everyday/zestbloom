@@ -1,0 +1,32 @@
+@media (max-width: $screen-xs) {
+  .user-notifications {
+    width: 100%;
+    &-list {
+      & > li {
+        padding: 12px 24px;
+        .image {
+          width: 40px;
+          height: 40px;
+        }
+        &.unread {
+          &:after {
+            width: 6px;
+            height: 6px;
+            top: 30px;
+            left: 10px;
+          }
+        }
+      }
+    }
+    &-actions {
+      right: 2px;
+      top: 22px;
+    }
+  }
+  .offerBtns{
+    display: block !important; 
+  }
+  .user-notifications-close {
+    display: block;
+  }
+}

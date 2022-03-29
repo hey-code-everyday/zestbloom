@@ -1,0 +1,26 @@
+@media (max-width: $screen-sm) {
+  .profile-contracts {
+    .profile-contracts-item {
+      .MuiCard-root {
+        .profile-contracts-bg-img {
+          width: 300px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-xs) {
+  .profile-contracts {
+    .profile-contracts-item {
+      width: 100%;
+      padding: 1rem 0;
+
+      .MuiCard-root {
+        .profile-contracts-bg-img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

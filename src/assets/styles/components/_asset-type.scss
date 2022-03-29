@@ -1,0 +1,64 @@
+.asset-type {
+    width: 100%;
+    margin: 16px;
+    max-width: 296px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: $br;
+    padding: 32px 58px 42px;
+    background-color: #fff;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+
+    &:not(.active) {
+        box-shadow: 0 24px 60px rgba($secondary, 0.1);
+    }
+
+    &:hover {
+        border-color: rgba($primary, 0.5);
+    }
+
+    &.active {
+        border-color: $primary;
+    }
+    
+    img {
+        position: relative;
+        z-index: 1;
+        margin: 0 auto 32px;
+    }
+
+    strong {
+        display: block;
+        margin-bottom: 12px;
+    }
+
+    &.multiple {
+        .image {
+            margin: auto;
+            max-width: 179px;
+            position: relative;
+
+            &:after,
+            &:before {
+                content: '';
+                @include center(horizontal);
+                z-index: 0;
+                height: 100%;
+                background: #f6f6f6;
+                border-radius: $br;
+                border: 1px solid rgba($secondary, 0.1);
+            }
+        
+            &:after {
+                width: calc(100% - 23px);
+                bottom: -8px;
+            }
+        
+            &:before {
+                width: calc(100% - 52px);
+                bottom: -16px;
+            }
+        }
+    }
+}

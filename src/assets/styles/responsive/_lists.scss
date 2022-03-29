@@ -1,0 +1,29 @@
+@media (max-width: 1639px) {
+    .list-with-link {
+        .list-link {
+            right: -5px;
+        }
+    }
+}
+
+@media (max-width: $screen-xs) {
+    .list-with-link {
+        .list-link {
+            width: 20px;
+            height: 20px;
+            background: transparent;
+
+            &.slick-next {
+                right: -20px;
+            }
+
+            &.slick-prev {
+                left: -20px;
+            }
+
+            svg {
+                font-size: 20px;
+            }
+        }
+    }
+}

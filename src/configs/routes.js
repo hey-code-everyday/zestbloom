@@ -1,0 +1,15 @@
+export const HOME = ['/', '/verify/:code', '/reset/verify/:code', '/email/verify/:code', '/aaa'];
+export const CREATE_NEW_PASSWORD = '/reset';
+export const SETTINGS = '/profile/settings';
+export const USER_PROFILE = '/profile/:username';
+export const USER_PROFILE_TAB = '/profile/:username/:tab';
+export const USER_PROFILE_TAB_DETAILS = '/profile/:username/:tab/:type';
+export const ACTIVITY = '/profile/activity';
+export const UPLOADASSET = '/upload-asset';
+export const MARKETPLACE = '/marketplace';
+export const AUCTION = '/auction';
+export const ASSET = '/asset/:assetId';
+export const POST_AUCTION = '/post-auction';
+export const EDIT_ASSET = '/edit/:assetId';
+export const FAQ = ['/faq', '/community_guidelines', '/terms_of_service', '/privacy_policy'];
+export const MAKE_AN_OFFER = '/asset/:assetId/make-an-offer';

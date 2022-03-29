@@ -1,0 +1,133 @@
+.dropdown-btn {
+    background: #ffffff !important;
+    border: 1px solid rgba($secondary, 0.2);
+    font-weight: bold !important;
+    font-size: 1rem !important;
+    color: $secondary !important;
+    padding: 8px 14px 8px 20px !important;
+    font-family: $font-primary !important;
+    margin-left: 10px !important;
+    height: 45px;
+    svg {
+        margin-left: 10px;
+    }
+}
+.dropdown-btn-people {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    text-transform: capitalize;
+    color: $secondary;
+    margin-right: 20px;
+    svg {
+        margin-left: 10px;
+    }
+}
+
+.date-dropdown {
+    .MuiMenu-paper {
+        margin-top: 10px;
+    }
+    .MuiList-padding {
+        padding: 26px 0;
+    }
+    .date-dropdown-item {
+        padding: 10px 30px;
+        font-size: 18px;
+        line-height: 21px;
+        color: $secondary-light;
+        font-family: $font-primary;
+        &.active {
+            color: $secondary;
+        }
+    }
+}
+.people-dropdown {
+    .MuiMenu-paper {
+        margin-top: 10px;
+    }
+    .MuiList-padding {
+        padding: 26px 0;
+    }
+    .people-dropdown-item {
+        padding: 10px 30px;
+        font-size: 18px;
+        line-height: 21px;
+        color: $secondary-light;
+        font-family: $font-primary;
+        &.active {
+            color: $secondary;
+        }
+    }
+}
+.sort-dropdown {
+    .MuiMenu-paper {
+        margin-top: 10px;
+    }
+    .MuiList-padding {
+        padding: 26px;
+    }
+    .radio-item {
+        .MuiRadio-root {
+            color: $primary;
+        }
+        .MuiTypography-body1 {
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 21px;
+            color: $secondary-light;
+            font-family: $font-primary;
+        }
+    }
+}
+.filter-checkboxes {
+    .filter-checkboxes-column {
+        &:not(:last-of-type) {
+            margin-right: 50px;
+        }
+    }
+    .MuiCheckbox-root {
+        color: $primary;
+    }
+    .checklist-title {
+        font-family: $font-primary;
+        font-weight: bold;
+        font-size: 1rem;
+        line-height: 1.25rem;
+        color: $secondary;
+        margin-bottom: 20px;
+    }
+    .MuiFormControlLabel-label {
+        font-family: $font-primary;
+        font-weight: 500;
+        font-size: 1.125rem;
+        line-height: 1.25rem;
+        color: $secondary-light;
+    }
+    .Mui-checked {
+        & ~ .MuiFormControlLabel-label {
+            color: $secondary;
+        }
+    }
+}
+.dropdown-prices {
+    display: flex;
+    img {
+        display: block;
+        width: 12px;
+        margin-right: 3px;
+        &:nth-child(2) {
+            margin-left: 3px;
+        }
+    }
+}
+.sort-category {
+    font-family: $font-primary !important;
+    font-weight: bold !important;
+    font-size: 1rem !important;
+    line-height: 1.25rem !important;
+    color: $secondary !important;
+    margin-bottom: 20px !important;
+}

@@ -1,0 +1,41 @@
+.settings-content {
+    width: 100%;
+    margin: -202px auto 25px;
+    max-width: 1060px;
+    padding-top: 32px;
+    border-radius: $br;
+    background-color: #fff;
+    border: 1px solid rgba($secondary, 0.1);
+
+    .top-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .actions {
+            display: flex;
+            align-items: center;
+
+            li {
+                &:last-child {
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+
+    .section {
+        padding-left: 48px;
+        padding-right: 48px;
+
+        &.border {
+            border-bottom: 1px solid rgba($secondary, 0.1);
+        }
+    }
+
+    .notif-list {
+        padding-bottom: 0;
+        padding-top: 0;
+        justify-content: space-between;
+    }
+}

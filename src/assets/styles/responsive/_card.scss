@@ -1,0 +1,291 @@
+@media (max-width: $screen-md) {
+  .people-min-card {
+    .min-avatar {
+      margin-right: 12px;
+    }
+  }
+
+  .marketplace-content {
+    .people-min-card {
+      width: 25%;
+    }
+  }
+
+  .card-footer {
+    padding: 16px 16px 8px !important;
+  }
+
+  .bid-row {
+    .num-of-bids {
+      font-size: 12px;
+    }
+
+    .bid-price {
+      font-size: 16px;
+    }
+
+    .voted {
+      svg {
+        font-size: 18px !important;
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-sm) {
+  .marketplace-content {
+    .people-min-card {
+      width: 33.3%;
+    }
+  }
+
+  .card-images {
+    margin: 0 16px 32px;
+  }
+
+  .card {
+    &>.tag.bottom-right {
+      display: none;
+    }
+
+    &-header,
+    &-footer {
+      transform: translateY(0);
+
+      .tag.top-right {
+        top: -18px;
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-xs) {
+  .marketplace-content {
+    .people-min-card {
+      width: 50%;
+
+      .author-name {
+        color: #fff;
+      }
+    }
+  }
+
+  .people-min-card {
+    .author-name {
+      color: #fff;
+    }
+
+    .amount-body {
+      .bid-price {
+        color: #fff;
+      }
+    }
+  }
+
+
+  .featured-artist-img-wrap {
+    .featured-artist-img-bg {
+      display: none;
+    }
+
+    .featured-artist-img-main {
+      bottom: -40px;
+      padding-left: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .featured-artist-img {
+      padding: 4px;
+      background: #fff;
+    }
+
+    .featured-artist-tags {
+      display: none;
+    }
+
+    .MuiCardMedia-root {
+      height: 80px;
+    }
+  }
+
+  .featured-artist-names-wrapper {
+    width: 100%;
+
+    .featured-artist-fullname {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      margin-bottom: 0;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    .featured-artist-username {
+      display: none;
+    }
+  }
+
+  .card-bio {
+    .MuiTypography-body1 {
+      font-size: 8px;
+      line-height: 12px;
+    }
+  }
+
+  .card-img-wrap {
+    padding: 0 !important;
+
+    .card-img {
+      height: 180px;
+
+      img,
+      video {
+        height: 100%;
+      }
+    }
+  }
+
+  .MuiCard-root {
+    overflow: hidden !important;
+  }
+
+  .best-voted-content {
+    padding: 12px 8px;
+    background-color: #000;
+    color: #fff;
+
+    .best-voted-title {
+      font-size: 10px;
+    }
+
+    .best-voted-username {
+      margin-left: 4px;
+      font-size: 10px;
+    }
+
+    .best-voted-voting {
+      font-size: 12px;
+      margin-top: 1.25rem;
+
+      svg {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .bid-row {
+    display: block;
+
+    .num-of-bids {
+      font-size: 10px;
+    }
+
+    .bid-price {
+      font-size: 12px;
+    }
+
+    .voted {
+      svg {
+        font-size: 14px !important;
+      }
+    }
+  }
+
+  .asset-card {
+    .card-footer {
+      height: auto;
+      padding: 6px 8px !important;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 34.38%, #000000 100%);
+
+      .asset-footer-title {
+        font-size: 12px;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      .username {
+        flex-grow: 1;
+        font-size: 10px;
+        margin-left: 0;
+        color: #fff;
+
+        .link.primary {
+          color: #485afd;
+          max-width: 70%;
+        }
+      }
+
+      .bid-row {
+        margin-top: 4px;
+        margin-bottom: 4px;
+        font-size: 10px;
+
+        .price-algo {
+          font-size: 10px !important;
+          color: #fff;
+        }
+      }
+
+      .num-of-bids {
+        font-size: 10px !important;
+        color: #fff;
+
+        .bids-count {
+          color: #fff;
+        }
+      }
+
+
+      .voted {
+        svg {
+          font-size: 12px;
+          color: #fff;
+        }
+
+        .vote-count {
+          font-size: 10px;
+          color: #fff;
+        }
+      }
+
+      .asset-card-button {
+        width: 100%;
+        height: auto;
+        box-shadow: 0px 0px 8px rgba(72, 90, 253, 0.4);
+        border-radius: 2px;
+        font-size: 8px;
+        padding: 4px;
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-xxs) {
+  .people-min-card {
+    .min-avatar {
+      margin-right: 8px;
+
+      .MuiAvatar-circle {
+        width: 38px;
+        height: 38px;
+      }
+    }
+  }
+
+  .card-images {
+    .image-list {
+      &>li {
+        margin-right: 5px;
+
+        img {
+          width: 70px;
+          height: 60px;
+        }
+      }
+    }
+
+    &:before {
+      width: 70%;
+    }
+  }
+}

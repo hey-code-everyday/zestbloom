@@ -1,0 +1,45 @@
+.notification-container {
+    position: fixed;
+    top: 100px;
+    right: 50px;
+    z-index: 9999;
+    width: 100%;
+    max-width: 350px;
+}
+.notification {
+    position: relative;
+    border-radius: $br;
+    background-color: #fff;
+    padding: 12px 30px 16px 16px;
+    box-shadow: 0 24px 60px rgba($secondary, 0.1);
+
+    &:not(:last-child) {
+        margin-bottom: 16px;
+    }
+
+    .notif-icon {
+        position: relative;
+        top: -1px;
+    }
+    .notif-message {
+        font-weight: 400;
+        margin-top: 10px;
+    }
+    .notif-close {
+        position: absolute;
+        top: 12px;
+        right: 10px;
+    }
+
+    // Notifications colors
+    @each $key, $val in $notif-colors {
+        &.#{$key} {
+            .notif-icon, .notif-title {
+                color: #{$val};
+            }
+        }
+    }
+}
+.notif-title:first-child {
+    text-transform: capitalize;
+}

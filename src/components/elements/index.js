@@ -1,0 +1,11 @@
+export { default as Footer } from './footer/Footer';
+export { default as Header } from './header/Header';
+export { default as Auth } from './auth/Auth';
+export { default as SignUp } from './auth/SignUp';
+export { default as Login } from './auth/Login';
+export { default as ForgotPassword } from './auth/ForgotPassword';
+export { default as NewPassword } from './auth/NewPassword';
+export { default as VerifyEmail } from './auth/VerifyEmail';
+export { default as VerifyYourEmail } from './auth/VerifyYourEmail';
+export { default as VerifyForgotPasswordEmail } from './auth/VerifyForgotPasswordEmail';
+export { default as MainRoute } from './MainRoute';

@@ -1,0 +1,33 @@
+@media (max-width: $screen-md) {
+  .post-auction {
+    h4 {
+      margin-bottom: 12px;
+    }
+    .post-auction-steps {
+      padding: 12px;
+    }
+  }
+}
+@media (max-width: $screen-xs) {
+  .post-auction {
+    .post-auction-steps {
+      .step {
+        .MuiStepLabel-labelContainer {
+          display: none;
+        }
+      }
+    }
+    .steps {
+      .second-step-fields {
+        & > div {
+          margin-right: 0;
+          width: 100%;
+          margin-bottom: 25px;
+        }
+      }
+      .info {
+        align-items: center;
+      }
+    }
+  }
+}

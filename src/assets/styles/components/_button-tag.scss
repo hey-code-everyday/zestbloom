@@ -1,0 +1,94 @@
+.button-tag {
+    height: 45px;
+    padding: 0 15px;
+    background: #FFFFFF;
+    border-radius: $br;
+    display: flex;
+    cursor: pointer;
+    margin-bottom: 10px;
+    align-items: center;
+    transition: all 0.2s;
+    border: 1px solid rgba($secondary, 0.2);
+
+    &:not(:last-child) {
+        margin-right: 8px;
+    }
+
+    &:not(.custom) {
+        .icon {
+            color: $primary;
+        }
+    
+    }
+
+    &.custom {
+        .icon {
+            color: $brand-red;
+        }
+    }
+
+    .icon {
+        font-size: 24px;
+        margin-right: 10px;
+    }
+
+    .text {
+        font-family: $font-primary;
+        font-weight: 700;
+        font-size: 0.9375rem;
+        line-height: 21px;
+        text-align: center;
+        color: #000;
+    }
+
+    &:hover {
+        border-color: $secondary-light;
+    }
+
+    &.selected {
+        color: #fff;
+        background-color: $primary;
+
+        .icon {
+            color: #fff;
+        }
+
+        .text {
+            color: #fff;
+        }
+    }
+}
+.custom-label {
+    position: relative;
+    .popover-icon {
+        position: absolute;
+        right: -10px;
+        top: -5px;
+    }
+    .new-label input {
+        color: inherit;
+    }
+}
+.new-label {
+    height: 45px;
+    padding: 0 15px;
+    background: #FFFFFF;
+    border-radius: $br;
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+    margin-bottom: 10px;
+    border: 1px solid rgba($secondary, 0.2);
+
+    i {
+        color: $brand-red;
+    }
+
+    .MuiFormControl-root .MuiInputBase-input:not(.MuiInputBase-inputMultiline) {
+        padding: 0 0 0 10px;
+        max-width: 90px;
+    }
+    .MuiOutlinedInput-notchedOutline {
+        border: 0;
+    }
+}

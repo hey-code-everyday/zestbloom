@@ -1,0 +1,13 @@
+@media (max-width: $screen-xs) {
+  .MuiAvatar-root {
+    &.sm {
+      width: 16px;
+      height: 16px;
+    }
+
+    &.xl {
+      width: 72px;
+      height: 72px;
+    }
+  }
+}

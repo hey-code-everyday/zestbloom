@@ -1,0 +1,18 @@
+@media (max-width: $screen-xs) {
+    .notification-container {
+        position: fixed;
+        top: 40px;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        width: 100%;
+        padding: 0 16px;
+        max-width: none;
+    }
+
+    .notification {
+        .notif-message {
+            color: #000;
+        }
+    }
+}

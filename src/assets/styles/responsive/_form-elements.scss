@@ -1,0 +1,65 @@
+@media (max-width: $screen-xs) {
+    .MuiFormControl-root {
+        .label,
+        input {
+            color: #fff;
+        }
+
+        .MuiOutlinedInput-root,
+        .MuiOutlinedInput-root:hover {
+            fieldset {
+                &.MuiOutlinedInput-notchedOutline {
+                    border-color: #fff !important;
+                }
+            }
+        }
+
+        .MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline {
+            border-color: #ffffff55;
+        }
+
+        .MuiInputBase-root {
+            svg {
+                color: #fff;
+
+                &.MuiSvgIcon-colorPrimary {
+                    color: #485AFD;
+                }
+            }
+        }
+    }
+
+    .edit-asset-right {
+        .asset-dropdown {
+            padding: 14px 20px;
+            width: 100%;
+            height: 55px;
+            justify-content: space-between;
+            border: 1px solid #fff;
+            justify-content: space-between;
+            color: #fff;
+        }
+    }
+
+    .MuiSwitch-root {
+        .MuiSwitch-track {
+            background-color: #fff;
+        }
+    }
+
+    .MuiIconButton-label > div {
+        color: #fff;
+    }
+}
+
+@media (min-width: $screen-xs) {
+    .edit-asset-right {
+        .asset-dropdown {
+            padding: 14px 20px;
+            width: 100%;
+            height: 55px;
+            border: 1px solid rgba(0, 0, 0, 0.23);
+            justify-content: space-between;
+        }
+    }
+}

@@ -1,0 +1,273 @@
+.form-element {
+    margin-bottom: 30px;
+
+    &.no-margin {
+        margin-bottom: 0;
+    }
+
+    .tooltip {
+        position: relative;
+        top: 2px;
+        margin-left: 8px;
+    }
+}
+
+.MuiTypography-root {
+    .label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: $secondary-light;
+    }
+}
+
+.MuiFormControl-root {
+    .label {
+        display: flex;
+        margin-bottom: 8px;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        color: $secondary-light;
+
+        &.invalid {
+            color: $error;
+        }
+    }
+
+    .MuiInputBase-input:not(.MuiInputBase-inputMultiline) {
+        line-height: 22px;
+        height: 22px;
+        padding: 14px 20px;
+    }
+
+    .MuiFormHelperText-contained {
+        margin: 6px 0 0;
+        font-size: 12px;
+    }
+
+    .Mui-focused {
+        .MuiOutlinedInput-notchedOutline {
+            border-width: 1px !important;
+            border-color: $secondary !important;
+        }
+        &.Mui-error {
+            .MuiOutlinedInput-notchedOutline {
+                border-color: $error !important;
+            }
+        }
+    }
+}
+.search-group,
+.tab-search {
+    .MuiInputBase-input:not(.MuiInputBase-inputMultiline) {
+        padding-left: 0;
+    }
+}
+
+.form-checkbox {
+    &.MuiFormControlLabel-root {
+        align-items: flex-start;
+    }
+    .MuiCheckbox-root {
+        margin-top: -9px;
+    }
+}
+
+.MuiCheckbox-root {
+    &.MuiCheckbox-colorPrimary {
+        color: $primary;
+    }
+
+    .MuiSvgIcon-root {
+        width: 24px;
+        height: 24px;
+    }
+}
+.post-auction {
+    .MuiCheckbox-root {
+        .MuiSvgIcon-root {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+.search-group {
+    display: flex;
+    flex-grow: 1;
+    max-width: 505px;
+
+    .MuiFormControl-root {
+        flex-grow: 1;
+    }
+
+    .MuiInputBase-root {
+        padding: 0 0.2rem 0 1rem;
+        border-color: black;
+    }
+
+    .MuiInputBase-input {
+        line-height: 21px;
+        height: 21px;
+    }
+
+    .MuiButtonBase-root {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        flex-shrink: 0;
+        border: 0;
+    }
+}
+.dark-mode {
+    .search-group {
+        .MuiInputBase-root {
+            border-color: white;
+            color: white;
+        }
+    }
+}
+
+.favorite-checkbox {
+    width: 100%;
+    height: 100%;
+    margin: 0 !important;
+
+    .MuiButtonBase-root {
+        width: 100%;
+        height: 100%;
+        background: none !important;
+    }
+}
+
+.tab-search {
+    display: flex;
+    width: 100%;
+    .MuiFormControl-root {
+        width: 100%;
+        .MuiOutlinedInput-root {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            background-color: #fff;
+        }
+    }
+    &-btns {
+        display: flex;
+        margin: 0 !important;
+        button {
+            width: 144px;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            background-color: #fff;
+            border-color: rgba($secondary, 0.23);
+            border-left: none;
+            font-size: 1.125rem;
+            &:last-child {
+                -webkit-border-radius: 0 $br $br 0;
+                -moz-border-radius: 0 $br $br 0;
+                border-radius: 0 $br $br 0;
+            }
+        }
+    }
+}
+
+.sidebar-search {
+    display: flex;
+    width: 100%;
+    .MuiFormControl-root {
+        width: 100%;
+        .MuiOutlinedInput-root {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            background-color: #fff;
+        }
+    }
+    &-btns {
+        padding-top: 1.5rem;
+        display: flex;
+        margin: 0px !important;
+        button {
+            width: 50%;
+            -webkit-border-radius: 5px 0 0 5px;
+            -moz-border-radius: 5px 0 0 5px;
+            border-radius: 5px 0 0 5px;
+            background-color: #fff;
+            border-color: rgba($secondary, 0.23);
+            font-size: 1.125rem;
+            &:last-child {
+                -webkit-border-radius: 0 5px 5px 0;
+                -moz-border-radius: 0 5px 5px 0;
+                border-radius: 0 5px 5px 0;
+            }
+        }
+    }
+}
+
+.filter-search {
+    display: flex;
+    width: 100%;
+    .MuiFormControl-root {
+        width: 100%;
+        .MuiOutlinedInput-root {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            background-color: #fff;
+        }
+    }
+    &-btns {
+        display: flex;
+        margin: 0 !important;
+        button {
+            width: 144px;
+            -webkit-border-radius: 0px 10px 10px 0px;
+            -moz-border-radius: 0px 10px 10px 0px;
+            border-radius: 0px 10px 10px 0px;
+            border-color: rgba($secondary, 0.23);
+            border-left: none;
+            font-size: 1.125rem;
+        }
+    }
+}
+
+.filter-listItem {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.asset-dropdown-body {
+    width: 100%;
+}
+
+.price-field {
+    position: relative;
+    .MuiFormControl-root {
+        .MuiInputBase-input:not(.MuiInputBase-inputMultiline) {
+            padding: 14px 50px 14px 20px;
+        }
+    }
+    &-algo {
+        position: absolute;
+        right: 30px;
+        top: 48px;
+        img {
+            width: 10px;
+        }
+    }
+}
+
+@media (max-width: $screen-md) {
+    .price-field {
+        &-algo {
+            top: 45px;
+        }
+    }
+}
+@media (max-width: $screen-xs) {
+    .price-field {
+        &-algo {
+            top: 42px;
+            right: 26px;
+        }
+    }
+}

@@ -1,0 +1,47 @@
+@media (max-width: $screen-lg) {
+  .text-banner-bottom {
+    padding: 185px 0;
+    &:before {
+      width: 280px;
+      height: 240px;
+    }
+  }
+}
+@media (max-width: $screen-md) {
+  .text-banner-top {
+    &:before {
+      width: 240px;
+      height: 120px;
+    }
+    &:after {
+      width: 300px;
+      height: 150px;
+    }
+  }
+  .text-banner-bottom {
+    padding: 125px 0;
+    &:before {
+      display: none;
+    }
+  }
+}
+@media (max-width: $screen-sm) {
+  .text-banner-top {
+    &-title {
+      font-size: 2.5rem;
+      line-height: 3rem;
+    }
+    &-subtitle {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+  }
+}
+@media (max-width: $screen-ssm) {
+  .text-banner-top {
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
+}

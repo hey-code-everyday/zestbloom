@@ -1,0 +1,12 @@
+@media (max-width: $screen-xs) {
+  .activity {
+    &-list {
+      li {
+        display: block;
+        .time {
+          margin-top: 8px;
+        }
+      }
+    }
+  }
+}

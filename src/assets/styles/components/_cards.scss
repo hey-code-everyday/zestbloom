@@ -1,0 +1,738 @@
+.featured-artist-card {
+    min-width: 220px;
+    max-width: 270px;
+    height: 280px;
+    margin: auto;
+}
+
+.card-tags {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 1rem;
+
+    &-tag {
+        margin: 0 4px;
+        border-radius: 0 0 1.5rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 2.6rem;
+        padding: 4px;
+        box-shadow: 2px 2px 5px rgba($color: #000000, $alpha: 0.4);
+        img {
+            width: 1.1rem !important;
+            height: 1.1rem !important;
+        }
+    }
+}
+
+.card-disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.card-series {
+    position: relative;
+
+    &:after,
+    &:before {
+        content: '';
+        @include center(horizontal);
+        z-index: -1;
+        height: 100%;
+        background: #fff;
+        border-radius: $br;
+        box-shadow: 0 24px 60px rgba($secondary, 0.08);
+    }
+
+    &:after {
+        width: calc(100% - 8px);
+        bottom: -8px;
+    }
+
+    &:before {
+        width: calc(100% - 16px);
+        bottom: -16px;
+    }
+}
+
+.best-voted-content {
+    padding: 12px 20px 20px;
+
+    .best-voted-title {
+        font-size: 1rem;
+    }
+
+    .best-voted-username {
+        margin-left: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .best-voted-voting {
+        font-size: 18px;
+        margin-top: 0.5rem;
+
+        svg {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.card-img-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+
+    .card-top-action {
+        z-index: 1;
+        @include position($top: 8px, $right: 8px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        label {
+            margin: 0;
+        }
+    }
+
+    .card-img {
+        position: relative;
+        overflow: hidden;
+        height: 240px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px 10px 0 0;
+
+        img,
+        video {
+            height: 100%;
+        }
+
+        .card-image {
+            display: block;
+            border-radius: $br $br 0 0;
+            margin: 0 auto;
+        }
+    }
+}
+
+.card-img-blur {
+    -webkit-filter: blur(45px);
+    filter: blur(45px);
+}
+
+.card-dropdown {
+    margin-top: 8px;
+
+    a,
+    button {
+        width: 100%;
+        padding: 5px 30px;
+        font-size: 18px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+
+        span {
+            margin-left: 16px;
+        }
+    }
+}
+
+.featured-artist-img-wrap {
+    position: relative;
+    margin-bottom: 38px;
+
+    .featured-artist-img-bg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background: linear-gradient(180deg, rgba(48, 46, 46, 0) 0%, #3a3737bf 100%);
+    }
+
+    .featured-artist-img-main {
+        @include position($bottom: -30px, $left: 0px);
+        display: flex;
+        align-items: center;
+        width: 100%;
+        left: 0;
+        padding-left: 28px;
+    }
+
+    .featured-artist-img {
+        padding: 2px;
+        background: #fff;
+        .artist-avatar {
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    .featured-artist-tags {
+        margin-left: 20px;
+
+        span {
+            font-size: 18px;
+            color: #fff;
+            font-family: $font-primary;
+            font-weight: 700;
+
+            &:not(:last-of-type) {
+                margin-right: 0.75rem;
+            }
+        }
+    }
+
+    .MuiCardMedia-root {
+        height: 130px;
+    }
+}
+
+.featured-artist-names-wrapper {
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    .featured-artist-fullname {
+        padding: 0;
+        font-size: 14px;
+    }
+}
+
+.MuiCard-root {
+    overflow: visible !important;
+}
+
+.followers-info {
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    color: $secondary-light;
+
+    span {
+        color: $secondary;
+    }
+}
+
+.btn-small.MuiButton-root {
+    padding: 4px 28px;
+    font-family: $font-primary;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    min-width: 120px;
+    border-radius: 5px;
+
+    &.btn-follow {
+        border: 1px solid $secondary-light;
+        color: $secondary-light;
+    }
+}
+
+.people-min-card {
+    // width: 20%;
+    margin: 12px 0;
+
+    .min-avatar {
+        margin-right: 20px;
+
+        .MuiAvatar-circle {
+            width: 56px;
+            height: 56px;
+        }
+
+        .MuiAvatar-root {
+            line-height: inherit !important;
+        }
+    }
+
+    .tag-body {
+        margin-top: 0.25rem;
+    }
+
+    .amount-body {
+        margin-top: 0.25rem;
+    }
+
+    .tag {
+        position: static;
+    }
+}
+
+.private_user_icon {
+    img {
+        width: 70%;
+        height: 96%;
+    }
+}
+
+.card-images {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 24px 32px;
+    position: relative;
+    border-radius: $br;
+    overflow: hidden;
+
+    .image-list {
+        display: flex;
+
+        & > li {
+            border-radius: $br;
+            overflow: hidden;
+            margin-right: 12px;
+
+            img {
+                width: 100px;
+                height: 80px;
+                -o-object-fit: cover;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .image-count {
+        font-weight: bold;
+        font-size: 1.5rem;
+        line-height: 1.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        text-align: right;
+        color: $secondary;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 280px;
+        background: linear-gradient(270deg, #ffffff 42.02%, rgba(255, 255, 255, 0) 100%);
+        right: 0;
+        top: 0;
+    }
+}
+
+.card-bio {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 0 1rem;
+    position: relative;
+    overflow: hidden;
+    font-size: 11px;
+    .MuiTypography-body1 {
+        line-height: 1.5rem;
+    }
+}
+
+.card-img {
+    position: relative;
+
+    .card-image-open {
+        display: none;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+
+        button {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+    &:hover {
+        .card-image-open {
+            display: block;
+        }
+    }
+}
+
+.bid-row {
+    display: flex;
+
+    .bid-price {
+        font-family: $font-primary;
+    }
+
+    .voted {
+        font-family: $font-primary;
+    }
+}
+
+.post-auction-card {
+    position: relative;
+    height: 190px;
+
+    .card-img-wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .card-top-action {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        z-index: 2;
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-size: cover !important;
+    position: relative;
+
+    & > .tag.bottom-right {
+        bottom: 45px;
+    }
+
+    &-header,
+    &-header-selected {
+        overflow: hidden;
+        position: relative;
+        transform: translateY(-100%);
+        transition: all 0.3s ease;
+
+        &-actions {
+            z-index: 1;
+            @include position($top: 8px, $right: 8px);
+
+            .card-top-action {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: 0.5rem;
+
+                label {
+                    margin: 0;
+                }
+            }
+        }
+
+        .tag.bottom-right {
+            bottom: -18px;
+        }
+    }
+
+    &-footer,
+    &-footer-selected {
+        position: relative;
+        height: 180px;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(100%);
+        transition: all 0.3s ease;
+
+        .tag.top-right {
+            right: 0;
+            top: 0;
+        }
+
+        .asset-footer-title-container {
+            flex: 1;
+        }
+
+        .asset-footer-title {
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .asset-footer-multiple {
+            display: flex;
+
+            img {
+                width: 22px;
+            }
+
+            & > div {
+                display: flex;
+                align-items: center;
+                margin-left: 8px;
+            }
+        }
+
+        .asset-card-button {
+            font-family: $font-primary;
+            border-radius: 6px;
+            // width: 130px;
+            height: 34px;
+            font-size: 14px;
+        }
+
+        .avatar-group {
+            display: flex;
+
+            .MuiAvatar-root {
+                margin-left: -12px;
+
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+
+        .ribbon {
+            position: absolute;
+            top: -37px;
+            right: 0;
+            padding: 8px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $brand-gold;
+
+            span {
+                margin-left: 12px;
+                font-size: 17px;
+                line-height: 17px;
+                font-weight: 700;
+            }
+        }
+
+        .asset-card-button-wrapper {
+            .MuiButtonGroup-root {
+                button:not(:last-child) {
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+
+                button:not(:first-child) {
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                }
+            }
+
+            button {
+                border-radius: 5px;
+                color: $secondary-light;
+                border-color: $secondary-light;
+
+                &.color-error:hover {
+                    color: #fff;
+                    background-color: $error;
+                    border-color: $error;
+                }
+
+                &.color-green:hover {
+                    color: #fff;
+                    background-color: $brand-green;
+                    border-color: $brand-green;
+                }
+
+                &.color-black:hover {
+                    color: #000;
+                    border-color: #000;
+                }
+            }
+        }
+    }
+    .card-header-selected,
+    .card-footer-selected {
+        transform: translateY(0);
+
+        .tag.top-right {
+            top: -18px;
+        }
+    }
+
+    &:hover {
+        & > .tag.bottom-right {
+            display: none;
+        }
+
+        .card-header,
+        .card-footer {
+            transform: translateY(0);
+
+            .tag.top-right {
+                top: -18px;
+            }
+        }
+    }
+}
+
+.auction-footer {
+    height: 230px;
+}
+
+.openCardMenu {
+    & > .tag.bottom-right {
+        display: none;
+    }
+
+    .card-header,
+    .card-footer {
+        transform: translateY(0);
+
+        .tag.top-right {
+            top: -18px;
+        }
+    }
+}
+
+.card-select {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    width: 100%;
+}
+
+.card-image-open {
+    button {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.asset-card {
+    border-radius: 4px !important;
+    overflow: hidden !important;
+    cursor: pointer;
+    max-width: 350px;
+    margin: auto;
+
+    .asset-file-container {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        img,
+        video {
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+    }
+
+    .asset-img-blur {
+        -webkit-filter: blur(45px);
+        filter: blur(45px);
+    }
+
+    &.card-disabled {
+        cursor: default;
+    }
+
+    .card-footer,
+    .card-footer-selected {
+        .num-of-bids {
+            .bids-count {
+                color: #000;
+            }
+        }
+
+        .voted {
+            svg {
+                font-size: 1.5rem;
+            }
+
+            .vote-count {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+.card-lottie {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.multiple-people-card {
+    .MuiAvatar-root {
+        position: relative;
+        top: 0;
+        transition: top ease 0.5s;
+    }
+
+    .MuiAvatar-root:hover {
+        top: -2px;
+    }
+}
+
+.popup-info {
+    .MuiTypography-root {
+        padding: 0.5rem 1rem;
+    }
+}
+
+.sale-history-img {
+    width: 48px;
+    height: 48px;
+    img {
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+}
+
+.list-img {
+    img {
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+}
+
+.voted-card {
+    max-width: 300px;
+    min-width: 230px;
+    height: 330px;
+    overflow: hidden;
+    position: relative;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba($color: $brand-gray, $alpha: 0.7);
+}
+
+.button-group {
+    button:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    a {
+        button {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+}

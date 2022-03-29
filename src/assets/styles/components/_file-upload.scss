@@ -1,0 +1,16 @@
+.file-upload {
+    input[type='file'] {
+        @include position($top: 0, $left: 0);
+        opacity: 0;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+    }
+
+    label {
+        cursor: pointer;
+        position: relative;
+        display: block;
+        height: 100%;
+    }
+}

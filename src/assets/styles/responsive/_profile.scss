@@ -1,0 +1,115 @@
+@media (max-width: $screen-md) {
+  .profile-sidebar {
+    width: 300px;
+  }
+
+  .profile-tabs {
+    width: calc(100% - 300px);
+  }
+}
+
+@media (max-width: $screen-sm) {
+  .profile-content {
+    margin: 0;
+    padding: 40px 0;
+
+    .profile-sidebar {
+      display: none;
+    }
+  }
+
+  .profile-tabs {
+    width: 100%;
+
+    .tabs-header {
+
+      &-left,
+      &-right {
+        display: none;
+      }
+
+      &-content {
+        button {
+          width: 33.33%;
+          max-width: 100%;
+          min-width: 0;
+
+          &:last-child {
+            border-right: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-xs) {
+  .profile-banner {
+    height: 162px;
+  }
+
+  .profile-content {
+    padding-bottom: 100px;
+
+    .white-card {
+      &>div {
+        background-color: transparent;
+        box-shadow: none;
+      }
+
+      .logo-with-icon {
+        img {
+          width: 100px;
+        }
+
+        span {
+          width: 35px;
+          height: 35px;
+
+          svg {
+            font-size: 26px !important;
+          }
+        }
+      }
+
+      button,
+      a {
+        max-width: 220px;
+      }
+
+      .white-card-text {
+        color: #fff;
+      }
+    }
+  }
+
+  .profile-top-mobile {
+    color: #fff;
+
+    .user-fullname {
+      color: #fff;
+    }
+  }
+
+  .mobile-profile-panes {
+    width: 100%;
+
+    .select-profile-panes {
+      width: 100%;
+      margin-bottom: 2rem;
+      background-color: #fff;
+      border-radius: 0.5rem;
+
+      .MuiSelect-selectMenu {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.profile-sales {
+  .sales-body {
+    padding: 24px 0;
+  }
+}

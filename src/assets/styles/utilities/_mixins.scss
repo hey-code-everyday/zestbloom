@@ -1,0 +1,65 @@
+@mixin bg-img($image: null, $repeat: null, $size: null, $color: null, $position: null) {
+    @if ($image) {
+        background-image: url($images-folder + $image);
+    }
+
+    background-color: $color;
+    background-size: $size;
+    background-repeat: $repeat;
+    background-position: $position;
+}
+
+@mixin position($position: absolute, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin center($position) {
+    position: absolute;
+
+    @if $position== 'vertical' {
+        top: 50%;
+        transform: translateY(-50%);
+    } @else if $position== 'horizontal' {
+        left: 50%;
+        transform: translateX(-50%);
+    } @else if $position== 'both' {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@mixin clearfix {
+    &:before,
+    &:after {
+        content: ' ';
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin ellipsis($width) {
+    max-width: $width;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin no-flicker {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+}
+
+@mixin text-wrap {
+    overflow: visible !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+}

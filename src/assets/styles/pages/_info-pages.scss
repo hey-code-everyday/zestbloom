@@ -1,0 +1,94 @@
+.info-pages {
+  background-color: #fff;
+  padding: 40px 0 180px;
+  .vertical-tabs {
+    width: 300px;
+    background: #3EB595;
+    box-shadow: 0 24px 60px rgba(38, 43, 63, 0.25);
+    border-radius: $br;
+    padding: 75px 0;
+    overflow: visible;
+    .MuiTabs-scrollable {
+      overflow-x: visible;
+    }
+    .tab-item {
+      width: 100%;
+      display: block;
+      max-width: 100%;
+      padding: 20px 35px 20px 55px;
+      opacity: 1;
+      span {
+        display: block;
+        text-align: left;
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 21px;
+        color: #fff;
+      }
+      &.Mui-selected {
+        span {
+          color: $secondary;
+        }
+      }
+      &:not(:last-of-type) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    }
+    .PrivateTabIndicator-vertical-12 {
+      background-color: transparent !important;
+      &:before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-left: 8px solid $secondary;
+        border-bottom: 8px solid transparent;
+        top: 50%;
+        left: 2px;
+        transform: translateY(-50%);
+      }
+    }
+  }
+  .horizontal-tabs {
+    display: none;
+  }
+  .vertical-tab-content {
+    width: calc(100% - 300px);
+    padding: 0 0 0 70px;
+    .faq-item {
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: $br;
+      padding: 40px;
+      margin-bottom: 12px;
+      &-left {
+        width: calc(100% - 195px);
+        margin-right: 20px;
+      }
+      &-right {
+        width: 175px;
+        text-align: center;
+        img {
+          display: block;
+          max-width: 100%;
+          margin: 0 auto;
+        }
+      }
+      .title {
+        font-weight: bold;
+        font-size: 1.378rem;
+        line-height: 2.25rem;
+        color: $secondary;
+        margin-bottom: 2rem;
+      }
+      .description {
+        font-family: $font-primary;
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 1.75rem;
+        color: #1D1F3B;
+      }
+    }
+  }
+}

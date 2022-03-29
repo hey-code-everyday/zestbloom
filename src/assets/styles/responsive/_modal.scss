@@ -1,0 +1,199 @@
+@media (max-width: $screen-sm) {
+  .publish-asset-modal {
+    .modal-content {
+      .modal-body {
+        .left {
+          width: calc(100% - 360px);
+          padding: 24px;
+        }
+        .right {
+          width: 360px;
+        }
+      }
+    }
+  }
+  .bid-modal {
+    .modal-body {
+      .left {
+        width: calc(100% - 360px);
+      }
+      .right {
+        width: 360px;
+      }
+    }
+  }
+  .delete-popup {
+    .MuiDialog-container {
+      .MuiDialog-paperWidthSm {
+        max-width: 596px;
+      }
+    }
+    &-content {
+      .title {
+        font-size: 25px;
+      }
+  
+      .desc {
+        font-size: 22px;
+      }
+  
+    }
+  }
+}
+@media (max-width: $screen-ssm) {
+  .publish-asset-modal {
+    .modal-content {
+      .modal-head {
+        padding: 16px;
+      }
+      .modal-body {
+        display: block;
+        .left {
+          width: 100%;
+          padding: 0;
+          .image {
+            border-radius: 0;
+          }
+          .report-btn {
+            margin-right: 16px;
+          }
+        }
+        .right {
+          width: 100%;
+          &-top {
+            padding: 16px;
+          }
+          &-center {
+            padding: 22px 16px;
+          }
+          &-bottom {
+            padding: 16px;
+          }
+        }
+      }
+    }
+  .bid-modal {
+    .modal-body {
+      display: block;
+      .left {
+        width: 100%;
+        border: none;
+        padding: 24px 16px;
+      }
+      .right {
+        width: 100%;
+        padding: 60px 16px 24px;
+        .time {
+          top: 10px;
+        }
+      }
+    }
+  }
+}
+.delete-popup {
+  .MuiDialog-container {
+    .MuiDialog-paperWidthSm {
+      max-width: 550px;
+    }
+  }
+  &-content {
+    .title {
+      font-size: 20px;
+    }
+
+    .desc {
+      font-size: 16px;
+    }
+
+    img{
+      width: 80px;
+    }
+
+  }
+}
+}
+@media (max-width: $screen-xs) {
+  .MuiDialog-paper {
+    .MuiDialogTitle-root {
+      padding: 40px 30px 15px;
+      &.with-back-btn {
+        .MuiTypography-root {
+          padding: 2px 15px;
+        }
+        .back-btn {
+          top: 36px;
+          left: 30px;
+        }
+      }
+    }
+    .MuiDialogContent-root:not(.no-padd) {
+      padding: 0 30px 40px;
+    }
+  }
+  .MuiDialog-container {
+    .MuiDialog-paperWidthXs,
+    .MuiDialog-paperWidthSm,
+    .MuiDialog-paperWidthMd,
+    .MuiDialog-paperWidthLg {
+      max-width: calc(100% - 32px) !important;
+      margin: 16px !important;
+    }
+  }
+  .change-wallet-modal{
+    .wallet{
+      &-address{
+        padding-left: 10px;
+      }
+      &-name{
+        width:30%;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  .publish-asset-modal {
+    .modal-content {
+      .modal-head {
+        display: block;
+        & > div {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+  .bid-modal-done {
+    .modal-body {
+      padding: 40px;
+    }
+  }
+  .report-popup-content {
+    padding: 24px;
+  }
+  .advanced-settings {
+    padding: 20px !important;
+    .attribute-form {
+      display: block;
+      fieldset.MuiFormControl-root {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 16px;
+      }
+    }
+    button {
+      width: 100%;
+    }
+  }
+  .delete-popup {
+    &-content {
+      &-btns{
+        flex-wrap: wrap;
+        button {
+          width: 100px !important;
+          width: 30px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

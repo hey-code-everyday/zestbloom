@@ -1,0 +1,349 @@
+@media (max-width: $screen-mmd) {
+    .text-h1 {
+        font-size: 50px;
+    }
+    .text-h2 {
+        font-size: 45px;
+    }
+    .text-h3 {
+        font-size: 32px;
+    }
+    .text-h4 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: $screen-md) {
+    .header {
+        .menu {
+            &-link {
+                margin-left: 12px;
+            }
+
+            &-btn {
+                margin-left: 12px;
+
+                .MuiButtonBase-root {
+                    &.MuiButton-sizeLarge {
+                        min-width: 115px;
+                    }
+                }
+            }
+
+            &-notif {
+                margin-left: 12px;
+            }
+        }
+
+        .MuiButton-outlinedSizeLarge {
+            padding: 13px;
+        }
+
+        .MuiButton-containedSizeLarge {
+            padding: 13px;
+        }
+    }
+
+    .tabs-header {
+        .MuiTab-root {
+            min-width: 125px;
+        }
+    }
+
+    .text-h1 {
+        font-size: 40px;
+    }
+    .text-h2 {
+        font-size: 32px;
+    }
+    .text-h3 {
+        font-size: 26px;
+    }
+    .text-h4 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: $screen-sm) {
+    .header {
+        .menu {
+            &-link-about {
+                display: none;
+            }
+
+            &-btn-marketplace {
+                margin-left: 0;
+            }
+
+            &-btn {
+                a,
+                button {
+                    font-size: 0.85rem !important;
+                }
+            }
+        }
+    }
+
+    .tab-search {
+        &-btns {
+            button {
+                width: 100px;
+            }
+        }
+    }
+
+    .footer {
+        background-size: 285px 215px;
+    }
+}
+
+@media (max-width: $screen-ssm) {
+    .sort-dropdown {
+        .filter-checkboxes {
+            display: block;
+            min-width: 220px;
+
+            &-column {
+                &:not(:last-of-type) {
+                    margin-right: 0;
+                    margin-bottom: 20px;
+                }
+            }
+
+            .checklist-title {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+@media (max-width: $screen-xs) {
+    .breadcrumbs {
+        a,
+        p {
+            font-size: 12px;
+        }
+    }
+
+    .header {
+        .menu-btn {
+            &-marketplace,
+            &-algo,
+            &-wallet {
+                display: none;
+            }
+        }
+    }
+
+    .mobile-menu-content {
+        .mobile-menu {
+            .menu-btn {
+                width: 100%;
+
+                button {
+                    width: 100%;
+                }
+
+                img {
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+
+    .dropdown-prices {
+        img {
+            width: 10px;
+        }
+    }
+
+    .MuiButtonBase-root.MuiButton-sizeLarge {
+        min-width: 120px;
+    }
+
+    .footer {
+        position: relative;
+        background-size: 180px 135px;
+        padding-bottom: 96px;
+
+        .footer-nav-item {
+            width: 50%;
+            margin-bottom: 20px !important;
+            padding: 0 24px;
+        }
+
+        .footer-main {
+            background-color: #1d1f3b;
+
+            h3,
+            h4 {
+                color: #fff !important;
+            }
+
+            ul li a {
+                color: #bebebe !important;
+            }
+
+            .social-menu-item {
+                margin: 0 8px;
+                font-size: 40px;
+            }
+        }
+
+        .footer-bottom {
+            background: #5c5c68;
+        }
+
+        .footer-bottom-content {
+            display: block;
+
+            & > div {
+                &:first-child {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+
+    .menu-container {
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 60px;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        background-color: #1d1f3b;
+        z-index: 99;
+
+        svg {
+            fill: #fff;
+        }
+
+        .mobile-menu-active {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100vw;
+            background: linear-gradient(128.85deg, #ff8084 0%, #9480ff 100%);
+            box-shadow: 0px 12px 24px rgba(255, 255, 255, 0.15);
+
+            .mobile-menu-item {
+                width: 33.33%;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                padding: 1.5rem 0;
+
+                &:active {
+                    opacity: 0.1;
+                    box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, 0.15),
+                        1px 1px 15px 2px rgba(154, 137, 164, 0.1);
+                    text-shadow: 1px -1px 1px rgba(143, 162, 199, 0.75),
+                        -1px 1px 1px rgba(192, 151, 178, 0.75);
+                }
+
+                &.disabled {
+                    opacity: 0.1;
+                }
+
+                span {
+                    padding-top: 0.75rem;
+                    font-weight: 500;
+                    font-size: 1rem;
+                }
+
+                svg {
+                    fill: #000;
+                }
+
+                .mui-icon {
+                    width: 48px;
+                    height: 48px;
+                }
+            }
+        }
+    }
+
+    .main,
+    .dark-modal {
+        .MuiTypography-body1,
+        .MuiTypography-body2,
+        .MuiTypography-caption,
+        .MuiTypography-h1,
+        .MuiTypography-h2,
+        .MuiTypography-h3,
+        .MuiTypography-h4,
+        .MuiTypography-h5,
+        .MuiTypography-h6,
+        .MuiTypography-subtitle1,
+        .MuiTypography-subtitle2,
+        .MuiCheckbox-root,
+        .MuiCheckbox-colorSecondary.Mui-checked {
+            color: #fff;
+        }
+
+        button {
+            border-color: #fff;
+        }
+
+        .MuiBackdrop-root {
+            background-color: rgba($color: #fff, $alpha: 0.5) !important;
+        }
+
+        .MuiDialog-container {
+            .MuiDialog-paper {
+                background-color: #1d1f3b;
+            }
+        }
+    }
+
+    .tab-search {
+        .tab-search-input {
+            .MuiInputBase-root {
+                background-color: #000;
+            }
+        }
+    }
+}
+
+@media (max-width: $screen-xxs) {
+    .tab-search {
+        display: block;
+
+        .MuiFormControl-root {
+            .MuiOutlinedInput-root {
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+        }
+
+        &-btns {
+            margin-top: 10px !important;
+
+            button {
+                width: 50%;
+                height: 40px;
+
+                &:first-child {
+                    border-left: 1px solid rgba($secondary, 0.23);
+                    border-radius: $br 0 0 $br;
+                }
+            }
+        }
+    }
+
+    .dropdown-btn-people {
+        margin-right: 10px;
+
+        svg {
+            margin-left: 5px;
+        }
+    }
+
+    .tabs-header {
+        .MuiTab-root {
+            min-width: 100px;
+        }
+    }
+}

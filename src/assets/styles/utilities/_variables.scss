@@ -1,0 +1,82 @@
+// Paths
+$images-folder: '/assets/img/';
+$icomoon-folder: '/assets/fonts/icomoon/';
+
+// Fonts
+$font-primary: 'Roboto', sans-serif;
+$font-secondary: 'Roboto', sans-serif;
+$font-icomoon: 'icomoon';
+
+// Main colors
+$primary: #485afd;
+$primary-dark: #3a48cb;
+$primary-light: rgba($primary, 0.07);
+$secondary: #000;
+$error: #c44e4e;
+$secondary-light: rgba($secondary, 0.5);
+
+// Brand colors
+$brand-orange: #f7ae75;
+$brand-red: #ff8072;
+$brand-gold: #f4d45d;
+$brand-yellow: #f4d45d;
+$brand-green: #3eb595;
+$brand-green-light: #2df1bc;
+$brand-blue: #1b6578;
+$brand-gray: #a6a6a6;
+
+// Dark mode
+$dark-bg-color: #303030;
+
+// Notification colors
+$notif-success: #3eb595;
+$notif-error: #e73035;
+$notif-info: $primary;
+$notif-warning: #f1aa72;
+
+$notif-colors: (
+    'success': $notif-success,
+    'error': $notif-error,
+    'info': $notif-info,
+    'warning': $notif-warning,
+);
+
+$colors: (
+    'primary': $primary,
+    'secondary': $secondary,
+    'brand-orange': $brand-orange,
+    'brand-red': $brand-red,
+    'brand-gold': $brand-gold,
+    'brand-yellow': $brand-yellow,
+    'brand-green': $brand-green,
+    'brand-blue': $brand-blue,
+    'white': #fff,
+);
+
+// Backgrounds
+$bg-grey: #efefef;
+
+// Border radius
+$br-sm: 6px;
+$br: 10px;
+
+// Font weights
+$font-weights: (
+    '400': 400,
+    '500': 500,
+    '600': 600,
+    '700': 700,
+    '800': 800,
+    '900': 900,
+);
+
+// screen width
+
+$screen-xxs: 459px;
+$screen-xs: 599px;
+$screen-ssm: 767px;
+$screen-sm: 959px;
+$screen-smm: 1089px;
+$screen-md: 1292px;
+$screen-mmd: 1509px;
+$screen-lg: 1919px;

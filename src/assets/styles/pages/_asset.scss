@@ -1,0 +1,435 @@
+.single-asset {
+  padding-bottom: 120px;
+  .asset {
+    &-left {
+      width: calc(100% - 500px);
+      padding: 100px 140px 0 60px;
+      .image {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .card-image-open {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+      }
+      .report-btn {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1rem;
+        color: rgba($secondary, 0.5);
+        i {
+          font-size: 1.25rem;
+          margin-right: 14px;
+        }
+      }
+      .escrow-buttons {
+        padding-top: 48px;
+        .first-btn {
+          border-radius: $br 0 0 $br;
+        }
+        .second-btn {
+          border-radius: 0 $br $br 0;
+          border-left: none;
+        }
+        button {
+          height: 48px;
+          // &:first-child {
+          //   border-radius: $br 0 0 $br;
+          // }
+          // &:last-child {
+          //   border-radius: 0 $br $br 0;
+          //   border-left: none;
+          // }
+        }
+      }
+    }
+    &-right {
+      width: 500px;
+      border-left: 1px solid rgba($secondary, 0.1);
+      border-right: 1px solid rgba($secondary, 0.1);
+      &-top {
+        padding: 30px;
+        .top-head {
+          margin-bottom: 40px;
+          .share-btn {
+            color: $primary;
+            margin-left: 20px;
+          }
+        }
+        .creator-collector {
+          h6 {
+            font-size: 1rem;
+            font-weight: bold;
+            color: rgba($secondary, 0.5);
+          }
+        }
+        .like-fav {
+          span {
+            font-family: $font-primary;
+            font-weight: bold;
+            color: rgba($secondary, 0.55);
+            &.fav-icon {
+              padding: 0;
+              &:hover {
+                background-color: transparent;
+              }
+            }
+          }
+          .color-grey {
+            color: rgba($secondary, 0.55);
+          }
+        }
+        .bid-price {
+          font-family: $font-primary;
+          font-weight: bold;
+          font-size: 2rem;
+          line-height: 2.3rem;
+          color: $secondary;
+        }
+      }
+      &-center {
+        padding: 22px 30px;
+        background: #FFFFFF;
+        box-shadow: 0 24px 60px rgba(38, 43, 63, 0.15);
+        position: relative;
+        margin-top: 25px;
+        .tag {
+          border-radius: $br $br 0 0;
+          padding: 13px 40px;
+          top: -46px;
+          right: 30px;
+        }
+        p {
+          font-family: $font-primary;
+          font-weight: bold;
+          color: rgba($secondary, 0.5);
+          margin-right: 12px;
+        }
+        .bid-price {
+          font-family: $font-primary;
+          font-weight: bold;
+          font-size: 2rem;
+          line-height: 2.3rem;
+          color: $secondary;
+        }
+      }
+      &-bottom {
+        padding: 20px 30px 40px;
+        & > p {
+          font-family: $font-primary;
+          font-weight: normal;
+          font-size: 1rem;
+          line-height: 1.5rem;
+          color: $secondary;
+          margin-bottom: 26px;
+        }
+        .preview-tabs {
+          button {
+            width: 50%;
+          }
+        }
+
+        .collector-tab {
+          overflow-y: scroll;
+          max-height:350px;
+          height:100%;
+          &::-webkit-scrollbar {
+            width: 6px;
+          }
+          /* Track */
+          &::-webkit-scrollbar-track {
+            background: transparent;
+          }
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            background: rgba($secondary, 0.2);
+            border-radius: 3px;
+          }
+          /* Handle on hover */
+          &::-webkit-scrollbar-thumb:hover {
+            background: rgba($secondary, 0.5);
+          }
+        }
+      }
+    }
+  }
+  .more-items {
+    padding-top: 100px;
+
+    h3 {
+      margin-bottom: 24px;
+    }
+  }
+  .owners-list {
+    .activity-table {
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+      /* Track */
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: rgba($secondary, 0.2);
+        border-radius: 3px;
+      }
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: rgba($secondary, 0.5);
+      }
+    }
+    .owners-box {
+      overflow-y: scroll;
+      height:280px;
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+      /* Track */
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: rgba($secondary, 0.2);
+        border-radius: 3px;
+      }
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: rgba($secondary, 0.5);
+      }
+    }
+    .people-min-card {
+      padding-right: 12px;
+      .min-avatar {
+        margin-right: 12px;
+      }
+      #offer {
+        width: 150px;
+        height: 30px;
+        border-radius: 0%;
+        font-size: 13px;
+      }
+    }
+  }
+}
+.edit-asset {
+  padding: 3rem 0 5rem;
+  &-left {
+    width: 630px;
+    margin-right: 50px;
+    .image {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .card-image-open {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+    }
+  }
+  &-right {
+    width: calc(100% - 680px);
+    h6 {
+      font-family: $font-primary;
+      font-weight: normal;
+      font-size: .875rem;
+      line-height: 1rem;
+      color: rgba($secondary, 0.5);
+      margin-bottom: .5rem;
+    }
+    .total{
+      margin-bottom: 30px;
+    }
+    .half-flex {
+      & > div {
+        width: calc(50% - 8px);
+        &:first-child {
+          margin-right: 16px;
+        }
+      }
+    }
+    .edit-price {
+      p {
+        font-size: 1rem;
+      }
+    }
+    .edit-visibility {
+      label {
+        color: rgba($secondary, .5);
+        .MuiTypography-body1 {
+          font-family: $font-primary;
+          font-weight: normal;
+          font-size: 1rem;
+          line-height: 1.2rem;
+        }
+      }
+    }
+    .edit-buttons {
+      button {
+        width: 152px;
+        height: 48px;
+        line-height: 48px;
+        font-weight: bold;
+        font-size: 1.125rem;
+        &.cancel-btn {
+          color: $secondary;
+          margin-right: 20px;
+        }
+      }
+    }
+    .advanced-settings {
+      span {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.offer-modal-body {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 24;
+  position: fixed;
+  width: 75%;
+  height: 70%;
+  right: auto;
+  bottom: auto;
+  overflow: auto;
+  background-color: #FFFFFF;
+}
+
+.asset-mini-content {
+  padding: 50px 0 120px;
+  &-title {
+    display: block;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    color: $secondary;
+    margin-bottom: 2rem !important;
+  }
+  &-body {
+    .left {
+      width: 330px;
+      margin-right: 70px;
+      .image {
+        border-radius: $br;
+        overflow: hidden;
+        margin-bottom: 24px;
+        position: relative;
+
+        .card-image-open {
+          background-color: rgba(255,255,255,.5);
+          position: absolute;
+          right: 15px;
+          top: 15px;
+          z-index: 1;
+        }
+      }
+      .title-of-artwork {
+        font-weight: bold;
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+        color: $secondary;
+      }
+    }
+    .right {
+      width: calc(100% - 400px);
+      .wallet {
+        .checked-wallet {
+          margin-right: 30px;
+        }
+        .change-wallet-button {
+          font-weight: bold;
+          font-size: 1rem;
+          line-height: 1.25rem;
+        }
+      }
+      .mini-title {
+        font-family: $font-primary;
+        font-weight: normal;
+        font-size: 0.875rem;
+        line-height: 1rem;
+        color: rgba($secondary, 0.5);
+      }
+      .mini-data {
+        font-family: $font-primary;
+        font-weight: bold;
+        font-size: 1rem;
+        line-height: 1.2rem;
+        color: $secondary;
+      }
+      .your-balance {
+        padding-top: 32px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba($secondary, 0.3);
+      }
+      .marketplace-fee {
+        padding: 20px 0;
+      }
+      .your-price {
+        padding-top: 28px;
+        .mini-title {
+          display: block;
+          margin-bottom: 8px !important;
+        }
+      }
+      .total {
+        margin-bottom: 16px;
+        &-title {
+          font-weight: bold;
+          font-size: 0.875rem;
+          line-height: 1rem;
+          color: $secondary;
+        }
+        &-price {
+          font-weight: bold;
+          font-size: 1.2rem;
+          line-height: 1.5rem;
+          color: $secondary;
+        }
+      }
+    }
+  }
+  &-buttons {
+    padding-top: 24px;
+    button {
+      height: 48px;
+      line-height: 48px;
+      font-weight: bold;
+      font-size: 1.125rem;
+      &.cancel-btn {
+        font-size: 1rem;
+        color: rgba($secondary, 0.5);
+        width: auto;
+        border: none;
+        height: auto;
+        line-height: normal;
+        padding: 0;
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+.upload-content {
+  .asset-item-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.asset-step-four {
+  max-width: 320px;
+  margin: 0 auto;
+}

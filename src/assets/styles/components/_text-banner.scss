@@ -1,0 +1,101 @@
+.text-banner-top {
+  padding: 60px 0;
+  position: relative;
+  &:before {
+    content: '';
+    z-index: -1;
+    width: 400px;
+    height: 200px;
+    @include position($bottom: 0, $left: 0px);
+    @include bg-img(
+            $image: 'banner-image-left.svg',
+            $repeat: no-repeat,
+            $size: 100% 100%,
+            $position: center
+    );
+  }
+  &:after {
+    content: '';
+    z-index: -1;
+    width: 535px;
+    height: 200px;
+    @include position($top: 0, $right: -80px);
+    @include bg-img(
+            $image: 'banner-image-right.svg',
+            $repeat: no-repeat,
+            $size: 100% 100%,
+            $position: center
+    );
+  }
+  &-title {
+    display: block;
+    max-width: 680px !important;
+    font-weight: 800 !important;
+    font-size: 3rem !important;
+    line-height: 3.75rem !important;
+    text-transform: uppercase;
+    color: $secondary;
+    margin: 0 auto 1.5rem !important;
+  }
+  &-subtitle {
+    display: block;
+    font-weight: 500 !important;
+    font-size: 2rem !important;
+    line-height: 2.375rem !important;
+    color: $secondary;
+  }
+}
+.text-banner-bottom {
+  @include bg-img(
+          $image: 'bottom-banner-bg.svg',
+          $repeat: no-repeat,
+          $size: cover,
+          $color: #fff,
+          $position: center top
+  );
+  padding: 215px 0;
+  position: relative;
+  &:before {
+    content: '';
+    z-index: 0;
+    width: 440px;
+    height: 340px;
+    transform: translateY(-50%);
+    @include position($top: 60%, $left: 0px);
+    @include bg-img(
+            $image: 'pattern-left.svg',
+            $repeat: no-repeat,
+            $size: 100% 100%,
+            $position: right top
+    );
+  }
+  &-title {
+    line-height: 3rem !important;
+    margin-bottom: 28px !important;
+    button {
+      font-size: 2rem;
+      line-height: 2rem;
+      color: $primary;
+      font-weight: 900;
+      text-transform: uppercase;
+      border-bottom: 1px solid $primary;
+    }
+  }
+  &-text {
+    display: block;
+    max-width: 800px;
+    margin: 0 auto !important;
+    font-family: $font-primary;
+    font-weight: normal;
+    font-size: 1.25rem;
+    line-height: 2rem;
+    text-align: center;
+    color: #1D1F3B;
+    button {
+      font-size: 1.25rem;
+      line-height: 1.25rem;
+      color: $primary;
+      border-bottom: 1px solid $primary;
+    }
+  }
+}

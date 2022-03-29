@@ -1,0 +1,11 @@
+.back-btn {
+    display: flex;
+    align-items: center;
+
+    .label {
+        color: $secondary;
+        font-family: $font-secondary;
+        padding-left: 12px;
+        font-weight: 700;
+    }
+}

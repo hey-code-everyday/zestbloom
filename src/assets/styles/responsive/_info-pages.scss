@@ -1,0 +1,49 @@
+@media (max-width: $screen-sm) {
+  .info-pages {
+    padding: 40px 0;
+    .info-tabs {
+      display: block !important;
+      .vertical-tabs {
+        display: none;
+      }
+      .horizontal-tabs {
+        display: flex;
+        .MuiTabs-scrollButtonsDesktop {
+          display: inline-flex !important;
+        }
+      }
+      .vertical-tab-content {
+        width: 100%;
+        padding: 30px 0;
+      }
+    }
+  }
+}
+@media (max-width: $screen-ssm) {
+  .info-pages {
+    .vertical-tab-content {
+      .faq-item {
+        padding: 20px;
+      }
+    }
+  }
+}
+@media (max-width: $screen-xs) {
+  .info-pages {
+    .vertical-tab-content {
+      .faq-item {
+        flex-direction: column-reverse;
+        &-left {
+          width: 100%;
+        }
+        &-right {
+          width: 100%;
+          margin-bottom: 20px;
+          img {
+            margin: 0 !important;
+          }
+        }
+      }
+    }
+  }
+}

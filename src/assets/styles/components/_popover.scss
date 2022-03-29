@@ -1,0 +1,15 @@
+.info-popover {
+  .MuiPopover-paper {
+    max-width: 300px;
+    background: #363636;
+    border-radius: $br;
+    padding: 8px 12px;
+    p {
+      font-family: $font-primary;
+      font-weight: 400;
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+      color: #FFFDFD;
+    }
+  }
+}

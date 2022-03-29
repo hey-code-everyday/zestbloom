@@ -1,0 +1,221 @@
+@import "variables";
+
+@font-face {
+  font-family: '#{$icomoon-font-family}';
+  src: url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?qar6gb');
+  src: url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?qar6gb#iefix') format('embedded-opentype'),
+  url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?qar6gb') format('truetype'),
+  url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?qar6gb') format('woff'),
+  url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?qar6gb##{$icomoon-font-family}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$icomoon-font-family}' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-notification {
+  &:before {
+    content: $icon-notification;
+  }
+}
+
+.icon-upload {
+  &:before {
+    content: $icon-upload;
+  }
+}
+
+.icon-label {
+  &:before {
+    content: $icon-label;
+  }
+}
+
+.icon-logout {
+  &:before {
+    content: $icon-logout;
+  }
+}
+
+.icon-user {
+  &:before {
+    content: $icon-user;
+  }
+}
+
+.icon-file-upload {
+  &:before {
+    content: $icon-file-upload;
+  }
+}
+
+.icon-fire {
+  &:before {
+    content: $icon-fire;
+  }
+}
+
+.icon-discord {
+  &:before {
+    content: $icon-discord;
+  }
+}
+
+.icon-virtual-reality {
+  &:before {
+    content: $icon-virtual-reality;
+  }
+}
+
+.icon-animation {
+  &:before {
+    content: $icon-animation;
+  }
+}
+
+.icon-video {
+  &:before {
+    content: $icon-video;
+  }
+}
+
+.icon-audio {
+  &:before {
+    content: $icon-audio;
+  }
+}
+
+.icon-graphic {
+  &:before {
+    content: $icon-graphic;
+  }
+}
+
+.icon-twitter {
+  &:before {
+    content: $icon-twitter;
+  }
+}
+
+.icon-facebook {
+  &:before {
+    content: $icon-facebook;
+  }
+}
+
+.icon-pinterest {
+  &:before {
+    content: $icon-pinterest;
+  }
+}
+
+.icon-instagram {
+  &:before {
+    content: $icon-instagram;
+  }
+}
+
+.icon-youtube {
+  &:before {
+    content: $icon-youtube;
+  }
+}
+
+.icon-reddit {
+  &:before {
+    content: $icon-reddit;
+  }
+}
+
+.icon-calendar-end {
+  &:before {
+    content: $icon-calendar-end;
+    color: #485afd;
+  }
+}
+
+.icon-calendar-start {
+  &:before {
+    content: $icon-calendar-start;
+    color: #485afd;
+  }
+}
+
+.icon-post-icon3 {
+  &:before {
+    content: $icon-post-icon3;
+    color: #485afd;
+  }
+}
+
+.icon-post-icon1 {
+  &:before {
+    content: $icon-post-icon1;
+    color: #485afd;
+  }
+}
+
+.icon-post-icon2 {
+  &:before {
+    content: $icon-post-icon2;
+    color: #485afd;
+  }
+}
+
+.icon-post-icon4 {
+  &:before {
+    content: $icon-post-icon4;
+    color: #485afd;
+  }
+}
+
+.icon-notifications-outline {
+  &:before {
+    content: $icon-notifications-outline;
+  }
+}
+
+.icon-information-outline {
+  &:before {
+    content: $icon-information-outline;
+  }
+}
+
+.icon-exclamation-triangle {
+  &:before {
+    content: $icon-exclamation-triangle;
+  }
+}
+
+.icon-share-2 {
+  &:before {
+    content: $icon-share-2;
+  }
+}
+
+.icon-photo-camera {
+  &:before {
+    content: $icon-photo-camera;
+  }
+}
+
+.icon-literature {
+  &:before {
+    content: $icon-literature;
+  }
+}

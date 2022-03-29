@@ -1,0 +1,173 @@
+.user-notifications {
+  width: 460px;
+  height: calc(100vh - 88px);
+  background: #FFFFFF;
+  box-shadow: 0 24px 60px rgba(38, 43, 63, 0.15);
+  position: fixed;
+  right: 0;
+  top: 88px;
+  z-index: 99;
+  overflow-y: scroll;
+  transform: translateX(150%);
+  transition: all .3s ease-in-out;
+  /* width */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: rgba($secondary, 0.2);
+    border-radius: 3px;
+  }
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba($secondary, 0.5);
+  }
+  &-list {
+    & > li {
+      display: flex;
+      align-items: flex-start;
+      padding: 12px 50px;
+      border-bottom: 1px solid rgba($secondary, 0.1);
+      .image {
+        width: 56px;
+        height: 56px;
+        margin-right: 16px;
+        overflow: hidden;
+        & > div {
+          display: flex;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .info {
+        width: calc(100% - 74px);
+        .title {
+          font-family: $font-primary;
+          font-weight: normal;
+          font-size: 1rem;
+          line-height: 1.5rem;
+          color: $secondary;
+          margin-bottom: 12px;
+          span {
+            font-family: $font-primary;
+            font-weight: bold;
+            font-size: 1.25rem;
+            line-height: 1.5rem;
+            color: $secondary;
+          }
+        }
+        .bid-btn {
+          min-width: 116px;
+          border: 1px solid rgba($secondary, 0.3);
+          padding: 12px 8px;
+          font-weight: bold;
+          font-size: 1rem;
+          line-height: 1rem;
+          color: #FFFFFF;
+          margin-bottom: 12px;
+        }
+        .accept-btn {
+          min-width: 116px;
+          border: 1px solid rgba($secondary, 0.3);
+          padding: 12px 8px;
+          font-weight: bold;
+          font-size: 1rem;
+          line-height: 1rem;
+          color: #FFFFFF;
+          margin: 0px 10px 12px 0px;
+        }
+        .reject-btn {
+          min-width: 116px;
+          border: 1px solid rgba($secondary, 0.3);
+          padding: 12px 8px;
+          font-weight: bold;
+          font-size: 1rem;
+          line-height: 1rem;
+          color: #FFFFFF;
+          margin-bottom: 12px ;
+          color: red;
+          border-color: red;
+        }
+        .offerBtns{
+          display: flex; 
+        }
+        .asset-image {
+          width: 56px;
+          height: 56px;
+          overflow: hidden;
+          margin-bottom: 12px;
+          &-card {
+            display: block;
+            height: 100%;
+            border-radius: 10px; 
+            width: 56px; 
+            overflow: hidden;
+            
+            & > img {
+              -o-object-fit: cover;
+                 object-fit: cover;
+            }
+          }
+        .color-error:hover {
+            color: #fff;
+            background-color: $error;
+            border-color: $error;
+        }
+
+        .color-green:hover {
+            color: #fff;
+            background-color: $brand-green;
+            border-color: $brand-green;
+        }
+
+        .color-black:hover {
+            color: #000;
+            border-color: #000;
+        }
+        }
+        .time {
+          font-family: $font-primary;
+          font-weight: normal;
+          font-size: 0.75rem;
+          line-height: 1.125rem;
+          color: rgba($secondary, 0.7);
+        }
+      }
+      &.unread {
+        position: relative;
+        &:after {
+          content: '';
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background: $primary;
+          border-radius: 50%;
+          top: 35px;
+          left: 24px;
+        }
+      }
+    }
+    .no-notifications{
+      padding-top: 30px;
+      text-align: center;
+    }
+  }
+  &-actions {
+    position: absolute;
+    right: 20px;
+    top: 28px;
+  }
+  &.open {
+    transform: translateX(0);
+  }
+}
+
+.user-notifications-close {
+  display: none;
+  animation: fadeIn 3s;
+}

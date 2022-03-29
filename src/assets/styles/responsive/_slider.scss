@@ -1,0 +1,17 @@
+@media (max-width: $screen-ssm) {
+  .thumbnail-slider {
+    .preview-mode {
+      .slick-slide {
+        div {
+          div {
+            border-radius: 0;
+          }
+        }
+      }
+    }
+    .preview-navigation {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}

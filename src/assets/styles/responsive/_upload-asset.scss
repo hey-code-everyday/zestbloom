@@ -1,0 +1,73 @@
+@media (max-width: $screen-sm) {
+  .asset-type {
+    padding: 32px 16px 42px;
+  }
+  .upload-assets {
+    .inner-padd {
+      padding: 0;
+    }
+  }
+  .asset-preview {
+    .preview-slider {
+      width: calc(100% - 360px);
+      padding: 24px 32px;
+    }
+    .preview-description {
+      width: 360px;
+      padding: 24px 32px;
+    }
+  }
+}
+@media (max-width: $screen-ssm) {
+  .asset-preview {
+    .preview-meta {
+      padding: 16px;
+    }
+    .asset-preview-content {
+      display: block;
+    }
+    .preview-slider {
+      width: 100%;
+      padding: 0;
+      .slick-slide {
+        border-radius: 0;
+      }
+    }
+    .preview-description {
+      width: 100%;
+      padding: 32px 16px;
+    }
+    &-image {
+      img {
+        height: auto !important;
+        max-height: 320px;
+      }
+      iframe {
+        height: auto !important;
+        padding: 0 20px;
+      }
+    }
+  }
+}
+@media (max-width: $screen-xs) {
+  .asset-type-parent {
+    display: block !important;
+    .asset-type {
+      margin: 0 auto;
+      &:not(:last-of-type) {
+        margin-bottom: 16px;
+      }
+    }
+  }
+  .upload-assets {
+    .first-step-content {
+      display: block;
+    }
+    .stepper {
+      padding: 15px 0;
+      .MuiStepLabel-labelContainer {
+        display: none;
+      }
+    }
+  }
+}

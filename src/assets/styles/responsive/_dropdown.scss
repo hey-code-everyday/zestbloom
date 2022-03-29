@@ -1,0 +1,7 @@
+@media (max-width: $screen-xs) {
+    .radio-item {
+        .MuiIconButton-label > div {
+            color: inherit;
+        }
+    }
+}
