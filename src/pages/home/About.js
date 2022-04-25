@@ -85,7 +85,7 @@ const About = () => {
     const anchorRef = useContext(AboutAnchorContext);
 
     return (
-        <div className="home-about relative desktop-only" ref={anchorRef}>
+        <div className="home-about relative" ref={anchorRef}>
             <div className="home-about-bg"></div>
             <div className="home-about-bg"></div>
             <Container maxWidth="xl" className="text-center">

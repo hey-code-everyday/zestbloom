@@ -22,7 +22,7 @@ export const searchPeopleFromFooter = (viewType, sort) => ({
 });
 
 export const moveMarketplaceFromFeatured = (bool) => ({
-    type: TYPES.FROM_FEATURED_ARTIST_SUCCES,
+    type: TYPES.FROM_FEATURED_ARTIST_SUCCESS,
     payload: { bool },
 });
 
@@ -36,7 +36,7 @@ export const placeABidAction = ({ asset_guid, auction_guid, bid }) => ({
 });
 
 export const buyNowSuccess = (asset_guid) => ({
-    type: TYPES.MARKETPLACE_ASSET_BUY_NOW_SECCESS,
+    type: TYPES.MARKETPLACE_ASSET_BUY_NOW_SUCCESS,
     payload: {
         asset_guid,
     },
@@ -192,6 +192,9 @@ export const loadMoreMarketplaceUsers = (loadMoreURL) => (dispatch) => {
                 },
             });
         });
+};
+export const removeMarketplaceSearchResult = () => (dispatch) => {
+    dispatch({ type: TYPES.REMOVE_MARKETPLACE_SEARCH_RESULT });
 };
 export const getAssetsForMarketPlace = (filter, category, currentRequest) => (dispatch) => {
     dispatch({ type: TYPES.GET_MARKETPLACE_ASSETS_REQUEST });

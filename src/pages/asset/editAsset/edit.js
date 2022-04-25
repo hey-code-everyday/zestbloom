@@ -61,7 +61,7 @@ const AssetEdit = ({
     const [tags, setTags] = useState(currentAsset?.media_types || []);
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
-    const [popUpInfo, setpopUpInfo] = useState(null);
+    const [popUpInfo, setPopUpInfo] = useState(null);
     const [netAmount, setNetAmount] = useState(0);
     const [zestBloomPercent, setZestBloomPercent] = useState(0);
     // const [advancedModalVisible, setAdvancedModalVisible] = useState(false);
@@ -93,7 +93,7 @@ const AssetEdit = ({
 
     const handlePopoverOpen = (event, info) => {
         setAnchorEl(event.currentTarget);
-        setpopUpInfo(info);
+        setPopUpInfo(info);
     };
 
     const handlePopoverClose = () => {

@@ -1,5 +1,4 @@
 yarn.lock
 src/pages/live
 src/pages/reverse
-node_modules
-
+node_modules/

@@ -12,6 +12,14 @@
   font-display: block;
 }
 
+@font-face {
+  font-family: '#{$lato-font-family}';
+  src: url('#{$lato-font-path}/#{$lato-font-family}.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
 [class^="icon-"],
 [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */

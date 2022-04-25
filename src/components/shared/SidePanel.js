@@ -9,7 +9,7 @@ const SidePanel = ({ closeButtonLabel, open, handleClose, children }) => {
 
     return (
         <Box ref={panelRef} px={2} className={`sidePanel ${open ? 'open-panel' : 'hide-panel'}`}>
-            <Box width="100%" textAlign="right">
+            <Box width="100%" display="flex" justifyContent="flex-end">
                 <button
                     className="whiteBtnHoverGreen"
                     onClick={() => handleClose()}

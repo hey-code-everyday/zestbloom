@@ -396,8 +396,13 @@ const MakeAnOfferModal = ({
                                     <Box className="mini-data price-algo">
                                         <span>
                                             {accountInfo
-                                                ? (accountInfo['min-balance'] / 1000000).toFixed(3)
-                                                : '-'}
+                                                ? accountInfo.assets
+                                                    ? (
+                                                          accountInfo.assets.length * 0.1 +
+                                                          0.1
+                                                      ).toFixed(3)
+                                                    : '0.1'
+                                                : '0.1'}
                                         </span>
                                         <img src={AlgoFont} alt="Algo" />
                                     </Box>
@@ -594,7 +599,9 @@ export default withWalletFallback(MakeAnOfferModal);
 function checkAmount(accountInfo, total) {
     const fees = 2000;
     const balance = accountInfo['amount'];
-    const minBalance = accountInfo['min-balance'];
+    // const minBalance = accountInfo['min-balance'];
+    const minBalance = accountInfo.assets ? accountInfo.assets.length * 0.1 + 0.1 : 0.1;
+
     const neededBalance = fees + total * 1000000 + minBalance;
     const result = balance - neededBalance;
     return result >= 0;

@@ -85,7 +85,7 @@ const success = {
 };
 
 const error = {
-    verificationFaild: { status: 'error', message: 'Verification failed. Wallet ' },
+    verificationFailed: { status: 'error', message: 'Verification failed. Wallet ' },
     wentWrong: { status: 'error', message: 'Something went wrong' },
     sendReport: { status: 'error', message: 'Report not sent, please try again' },
     missingContract: { status: 'error', message: 'Missing contract' },

@@ -2,13 +2,13 @@ import React, { useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Typography, Box, Container, Button } from '@material-ui/core';
+import { Box, Container, Button } from '@material-ui/core';
 
 import PeopleCard from 'components/elements/cards/peopleCardFollowers';
 import Slider from 'components/shared/slider';
 import { moveMarketplaceFromFeatured } from 'redux/marketplace/actions';
 
-const FeaturedArtists = ({ className }) => {
+const FeaturedArtists = () => {
     const dispatch = useDispatch();
     const { featuredArtist } = useSelector((state) => state.marketplace);
 
@@ -29,31 +29,14 @@ const FeaturedArtists = ({ className }) => {
         <div className="home-featured-artists">
             <div className="home-featured-artists-bg"></div>
             <Container className="home-featured-artists-container" style={{ padding: 0 }}>
-                <Box mb={4} textAlign="center" className="desktop-only">
+                <Box mb={4} textAlign="center">
                     <Box className="text-h2 text-uppercase">Featured Artists</Box>
-                    {className === 'home' && (
-                        <Box className="view-all">
-                            <Link to="/marketplace?type=people" color="primary">
-                                <Button onClick={showAllPeoples} className="view-all-btn">
-                                    View All
-                                </Button>
-                            </Link>
-                        </Box>
-                    )}
-                </Box>
-
-                <Box className="mobile-only">
-                    <Box mb={2} display="flex" alignItems="flex-end" justifyContent="space-between">
-                        <Typography variant="h2">Featured Artists</Typography>
-                        {className === 'home' && (
-                            <Box className="view-all">
-                                <Link to="/marketplace?type=people" color="primary">
-                                    <Button onClick={showAllPeoples} className="view-all-btn">
-                                        View All
-                                    </Button>
-                                </Link>
-                            </Box>
-                        )}
+                    <Box className="view-all">
+                        <Link to="/marketplace?type=people" color="primary">
+                            <Button onClick={showAllPeoples} className="view-all-btn">
+                                View All
+                            </Button>
+                        </Link>
                     </Box>
                 </Box>
 

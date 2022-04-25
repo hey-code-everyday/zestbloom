@@ -97,7 +97,7 @@ const ProfileContractsListings = ({ listings, next, walletFallback }) => {
                 teal,
                 currentListing?.asset?.asset_id,
                 selectedWallet,
-                withWalletFallback,
+                walletFallback,
             );
 
             if (cancelResult?.status === 'error') {

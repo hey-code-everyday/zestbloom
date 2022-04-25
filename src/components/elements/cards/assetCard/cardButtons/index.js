@@ -74,7 +74,7 @@ const CardButton = ({
                 </Box>
             ) : (
                 <Box fontSize="1.25rem" fontWeight="bold" className="price-algo">
-                    <span>{showedPrice}</span>
+                    <span className="font-primary">{showedPrice}</span>
                     {showedPrice && (
                         <>
                             <img className="desktop-only" src={algoFont} alt="Algo" />

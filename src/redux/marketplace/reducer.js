@@ -96,9 +96,15 @@ const marketplaceReducer = (state = initialState, action) => {
                 },
                 loading: false,
             };
+        case TYPES.REMOVE_MARKETPLACE_SEARCH_RESULT:
+            return {
+                ...state,
+                marketplaceAssets: {},
+            };
         case TYPES.GET_MARKETPLACE_ASSETS_REQUEST:
             return {
                 ...state,
+                marketplaceAssets: {},
                 getMarketplaceAssetsLoading: true,
             };
         case TYPES.GET_MARKETPLACE_ASSETS_SUCCESS:
@@ -466,7 +472,7 @@ const marketplaceReducer = (state = initialState, action) => {
                 loading: false,
                 initFeaturedArtistState: true,
             };
-        case TYPES.FROM_FEATURED_ARTIST_SUCCES:
+        case TYPES.FROM_FEATURED_ARTIST_SUCCESS:
             return {
                 ...state,
                 fromFeaturedArtist: payload.bool,
@@ -525,7 +531,7 @@ const marketplaceReducer = (state = initialState, action) => {
                 }),
             };
         }
-        case TYPES.MARKETPLACE_ASSET_BUY_NOW_SECCESS:
+        case TYPES.MARKETPLACE_ASSET_BUY_NOW_SUCCESS:
             return {
                 ...state,
                 marketplaceAssets: {

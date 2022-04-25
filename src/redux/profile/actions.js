@@ -42,7 +42,7 @@ export const setMyAlgoAccount = (accounts) => (dispatch) => {
                 dispatch(setWallets(accounts));
                 dispatch(addWallet(accounts?.map((x) => x.address)));
                 localStorage.setItem('wallets', JSON.stringify(accounts));
-                return accounts;
+                return response?.data;
             }
         })
         .catch((err) => {

@@ -141,10 +141,11 @@
     left: 0;
     background: rgba($color: $brand-gray, $alpha: 0.5);
     backdrop-filter: blur(10px);
-    height: 100%;
+    height: calc(100% - 85px);
     padding: 2rem 1rem;
-    min-width: 400px;
     max-width: 500px;
+    overflow-y: auto;
+    z-index: 99;
 }
 .open-panel {
     animation-name: animation-left-right;
@@ -162,5 +163,5 @@
     grid-template-columns: repeat(auto-fit, minmax(20rem, 20rem));
     grid-auto-rows: 25rem;
     grid-gap: 1rem;
-    justify-content: center;
+    justify-content: space-around;
 }

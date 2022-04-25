@@ -45,9 +45,14 @@
         font-size: 12px;
     }
 
+    
+    .MuiOutlinedInput-notchedOutline {
+        border-width: 1px !important;
+        border-color: rgba($color: $secondary, $alpha: 0.3) !important;
+    }
+
     .Mui-focused {
         .MuiOutlinedInput-notchedOutline {
-            border-width: 1px !important;
             border-color: $secondary !important;
         }
         &.Mui-error {
@@ -57,11 +62,24 @@
         }
     }
 }
-.search-group,
-.tab-search {
-    .MuiInputBase-input:not(.MuiInputBase-inputMultiline) {
-        padding-left: 0;
+.dark-mode {
+    .MuiFormControl-root {.MuiOutlinedInput-notchedOutline {
+        border-width: 1px !important;
+        border-color: rgba($color: white, $alpha: 0.7) !important;
     }
+
+    .Mui-focused {
+        .MuiOutlinedInput-notchedOutline {
+            border-color: white !important;
+        }
+        &.Mui-error {
+            .MuiOutlinedInput-notchedOutline {
+                border-color: $error !important;
+            }
+        }
+    }
+}
+
 }
 
 .form-checkbox {
@@ -96,26 +114,14 @@
     display: flex;
     flex-grow: 1;
     max-width: 505px;
+    height: 3rem;
+
+    .MuiOutlinedInput-adornedEnd {
+        padding-right: 3px;
+    }
 
     .MuiFormControl-root {
         flex-grow: 1;
-    }
-
-    .MuiInputBase-root {
-        padding: 0 0.2rem 0 1rem;
-        border-color: black;
-    }
-
-    .MuiInputBase-input {
-        line-height: 21px;
-        height: 21px;
-    }
-
-    .MuiButtonBase-root {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        flex-shrink: 0;
-        border: 0;
     }
 }
 .dark-mode {

@@ -35,13 +35,6 @@ const Login = (props) => {
         onSubmit: (values) => {
             dispatch(login(values.email, values.password))
                 .then(() => {
-                    dispatch(
-                        setNotification({
-                            status: 'info',
-                            message:
-                                'Auctions are temporarily disabled while we perform smart contract upgrades.',
-                        }),
-                    );
                     onCloseLoginDialog();
                 })
                 .catch((error) => {

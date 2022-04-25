@@ -1,27 +1,7 @@
 @media (max-width: $screen-xs) {
     .MuiFormControl-root {
-        .label,
-        input {
-            color: #fff;
-        }
-
-        .MuiOutlinedInput-root,
-        .MuiOutlinedInput-root:hover {
-            fieldset {
-                &.MuiOutlinedInput-notchedOutline {
-                    border-color: #fff !important;
-                }
-            }
-        }
-
-        .MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline {
-            border-color: #ffffff55;
-        }
-
         .MuiInputBase-root {
             svg {
-                color: #fff;
-
                 &.MuiSvgIcon-colorPrimary {
                     color: #485AFD;
                 }

@@ -9,3 +9,5 @@ export { default as VerifyEmail } from './auth/VerifyEmail';
 export { default as VerifyYourEmail } from './auth/VerifyYourEmail';
 export { default as VerifyForgotPasswordEmail } from './auth/VerifyForgotPasswordEmail';
 export { default as MainRoute } from './MainRoute';
+export { default as BecomeCreator } from './userRole/BecomeCreator';
+export { default as RequestSent } from './userRole/RequestSent';

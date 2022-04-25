@@ -38,21 +38,17 @@ const ButtonTag = ({
     };
 
     return (
-        <label
-            className={`button-tag ${selected ? 'selected' : ''} ${
+        <button
+            className={`whiteBtnHoverGreen ${selected ? 'selected' : ''} ${
                 category === 'custom' ? 'new-label' : ''
             }`}
             onClick={(e) =>
                 onSelectTagFromUpload ? onSelectTagFromUpload({ slug, category }) : selectTags(e)
             }
         >
-            {icon && (
-                <span className="icon">
-                    <i className={icon} />
-                </span>
-            )}
+            {icon && <i className={icon} />}
             {text && <span className="text">{text}</span>}
-        </label>
+        </button>
     );
 };
 

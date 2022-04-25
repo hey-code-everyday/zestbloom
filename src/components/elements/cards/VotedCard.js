@@ -18,7 +18,7 @@ const VotedCard = ({ item, clickOnCard }) => {
     const { user } = useSelector((state) => state.auth);
     const { isLoggedIn } = useSelector((state) => state.auth);
 
-    const onUpvoted = (guid, username) => {
+    const onUpVoted = (guid, username) => {
         if (isLoggedIn && user.username !== username) {
             dispatch(upvoteAsset(guid));
         }
@@ -135,7 +135,7 @@ const VotedCard = ({ item, clickOnCard }) => {
                                     className="pointer hover-opacity"
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        onUpvoted(item?.guid, item?.creator?.username);
+                                        onUpVoted(item?.guid, item?.creator?.username);
                                     }}
                                 />
                             )}

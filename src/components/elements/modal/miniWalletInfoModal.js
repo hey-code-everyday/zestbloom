@@ -71,7 +71,11 @@ const WalletInfoModal = ({ open, close, info, address }) => {
                         >
                             <Box className="wallet-modal-item-title">Minimum Balance:</Box>
                             <Box display="flex" className="wallet-modal-item-result">
-                                {accountInfo ? Number(accountInfo['min-balance']) / 1000000 : ''}
+                                {accountInfo
+                                    ? accountInfo.assets
+                                        ? (accountInfo.assets.length * 0.1 + 0.1).toFixed(3)
+                                        : '0.1'
+                                    : '0.1'}
                                 <img
                                     src={algoFont}
                                     style={{ width: '10px', marginLeft: '2px' }}

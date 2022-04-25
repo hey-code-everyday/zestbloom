@@ -164,7 +164,6 @@
     .footer {
         position: relative;
         background-size: 180px 135px;
-        padding-bottom: 96px;
 
         .footer-nav-item {
             width: 50%;
@@ -173,25 +172,10 @@
         }
 
         .footer-main {
-            background-color: #1d1f3b;
-
-            h3,
-            h4 {
-                color: #fff !important;
-            }
-
-            ul li a {
-                color: #bebebe !important;
-            }
-
             .social-menu-item {
                 margin: 0 8px;
                 font-size: 40px;
             }
-        }
-
-        .footer-bottom {
-            background: #5c5c68;
         }
 
         .footer-bottom-content {
@@ -206,66 +190,19 @@
     }
 
     .menu-container {
-        position: fixed;
-        right: 0;
-        top: 0;
-        width: 60px;
-        display: flex !important;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-end;
-        background-color: #1d1f3b;
         z-index: 99;
-
-        svg {
-            fill: #fff;
+        .menu-icon {
+            fill: $brand-green;
         }
-
-        .mobile-menu-active {
-            display: flex;
-            flex-wrap: wrap;
-            width: 100vw;
-            background: linear-gradient(128.85deg, #ff8084 0%, #9480ff 100%);
-            box-shadow: 0px 12px 24px rgba(255, 255, 255, 0.15);
-
-            .mobile-menu-item {
-                width: 33.33%;
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-                padding: 1.5rem 0;
-
-                &:active {
-                    opacity: 0.1;
-                    box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, 0.15),
-                        1px 1px 15px 2px rgba(154, 137, 164, 0.1);
-                    text-shadow: 1px -1px 1px rgba(143, 162, 199, 0.75),
-                        -1px 1px 1px rgba(192, 151, 178, 0.75);
-                }
-
-                &.disabled {
-                    opacity: 0.1;
-                }
-
-                span {
-                    padding-top: 0.75rem;
-                    font-weight: 500;
-                    font-size: 1rem;
-                }
-
-                svg {
-                    fill: #000;
-                }
-
-                .mui-icon {
-                    width: 48px;
-                    height: 48px;
-                }
+    }
+    .dark-mode {
+        .menu-container {
+            .menu-icon {
+                fill: #fff;
             }
         }
     }
 
-    .main,
     .dark-modal {
         .MuiTypography-body1,
         .MuiTypography-body2,

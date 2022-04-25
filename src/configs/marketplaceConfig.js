@@ -16,7 +16,7 @@ export const MARKETPLACE_CONFIG = {
 const popular = 'popular';
 const recently_listed = 'recently_listed';
 const mostFollowed = 'most_followed';
-const featuredAtrist = 'featured-artist';
+const featuredArtist = 'featured-artist';
 
 const zestbloom_minted = 'zestbloom_minted';
 const featured_work = 'featured_work';
@@ -118,7 +118,7 @@ export const FILTER_CONFIG = {
     popular,
     recently_listed,
     mostFollowed,
-    featuredAtrist,
+    featuredArtist,
     price,
     zestbloom_minted,
     featured_work,

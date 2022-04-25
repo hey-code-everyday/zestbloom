@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import ButtonTag from 'components/shared/ButtonTag';
 
-import { getAssetsTags, addAssetsTags } from 'redux/marketplace/actions';
+import { addAssetsTags } from 'redux/marketplace/actions';
 import Popover from '@material-ui/core/Popover';
 import PropTypes from 'prop-types';
 
@@ -20,10 +20,6 @@ const UploadAssetStep2 = ({ handleNext, classes, handleBack, setAllValues, allVa
     const openPopover = Boolean(anchorEl);
 
     const [tags, setTags] = useState([]);
-
-    useEffect(() => {
-        dispatch(getAssetsTags());
-    }, [dispatch]);
 
     useEffect(() => {
         if (allValues?.tag) {

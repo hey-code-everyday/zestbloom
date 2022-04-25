@@ -55,8 +55,10 @@ const BestVoted = () => {
             <div className="home-best-voted-bg"></div>
             <Container>
                 <Box className="title-wrapper" mb={4} textAlign="center">
-                    <Box className="text-h2 text-uppercase">Voted best creators & Collections</Box>
-                    <Typography className="mobile-only text-white" variant="h2">
+                    <Box className="text-h2 text-uppercase desktop-only">
+                        Voted best creators & Collections
+                    </Box>
+                    <Typography className="mobile-only text-white text-uppercase" variant="h2">
                         Voted Top
                     </Typography>
                     <Box className="view-all">

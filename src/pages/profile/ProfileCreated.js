@@ -31,8 +31,7 @@ import SearchBox from 'components/shared/SearchBox';
 import SelectAll from 'components/shared/SelectAll';
 import AssetCard from 'components/elements/cards/assetCard';
 import AssetList from 'components/elements/list/assetList';
-import BecomeCreator from './dialogs/BecomeCreator';
-import RequestSent from './dialogs/RequestSent';
+import { BecomeCreator, RequestSent } from 'components/elements';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 
 const ProfileCreated = () => {

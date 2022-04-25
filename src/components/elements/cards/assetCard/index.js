@@ -1,4 +1,4 @@
-import React, { useRef, useState, Suspense, useMemo, useEffect, useCallback } from 'react';
+import React, { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,19 +10,19 @@ import {
     Card,
     Checkbox,
     FormControlLabel,
-    Typography,
     Grid,
     IconButton,
+    Typography,
 } from '@material-ui/core';
 import {
+    CheckCircle,
+    CheckCircleOutline,
+    Height,
     Star,
     StarBorder,
     ThumbUp,
     ThumbUpOutlined,
     Timer,
-    Height,
-    CheckCircle,
-    CheckCircleOutline,
 } from '@material-ui/icons';
 import CreateIcon from '@material-ui/icons/Create';
 
@@ -31,8 +31,21 @@ import OpenPicturePopover from '../fullScreen';
 import { needToLoginAction } from 'redux/auth/actions';
 import CardMenu from '../cardMenu';
 import LottieContainer from 'components/shared/LottieContainer';
-import { getSaleAmountAssetCard, checkContract, stopEvent, checkAuction } from 'helpers/functions';
-import { ANONYMOUS, PRIVATE_OWNER, PRIVATE, COMPLETED } from 'configs';
+import {
+    checkAuction,
+    checkContract,
+    dangerTime,
+    getSaleAmountAssetCard,
+    stopEvent,
+} from 'helpers/functions';
+import {
+    ANONYMOUS,
+    COMPLETED,
+    NOTIFICATIONS,
+    PRIVATE,
+    PRIVATE_OWNER,
+    REDIRECT_TO_ASSET,
+} from 'configs';
 import AssetCardPrice from '../assetCardPrice';
 import AssetCardButton from '../assetCardButton';
 import { getTimeLeft } from 'helpers/intervalYears';
@@ -40,17 +53,16 @@ import CardButton from './cardButtons';
 import BidDoneModal from 'components/elements/modal/bidDone';
 import BuyNowDoneModal from 'components/elements/modal/buyDone';
 import BidModal from 'components/elements/modal/placeBid';
-import { dangerTime } from 'helpers/functions';
 import MakeAnOfferModal from 'components/elements/modal/makeAnOfferModal';
 import FullScreenMobileIcon from 'assets/img/full_screen_mobile.svg';
 import { Tag } from '../../../shared';
 import { setNotification } from 'redux/profile/actions';
-import { NOTIFICATIONS, REDIRECT_TO_ASSET } from 'configs';
 import DeleteAsset from 'pages/asset/editAsset/deleteAsset';
 import { onShowDeleteBtn } from 'transactions/algorand/validations';
 import ConfirmModal from 'components/elements/modal/confirmModal';
 import PropTypes from 'prop-types';
 import CardTags from 'components/shared/CardTags';
+import clsx from 'clsx';
 
 const Loading = () => {
     return (
@@ -94,7 +106,6 @@ const AssetCard = ({
     assetsInWallet,
     updateAsset,
     buyNowSuccess,
-    mobile = false,
     afterMakeAnOffer,
     closeMyBidAuctionLoading,
     selectable = false,
@@ -102,6 +113,7 @@ const AssetCard = ({
     selectAsset = () => {},
     deleteAssetFromReducer,
     isMyProfile,
+    galleryMode,
 }) => {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -131,9 +143,9 @@ const AssetCard = ({
     //     // closeMyBidAuctionLoading,
     //     // deleteAssetFromReducer,
     // );
-    const tag = item?.media_types?.find((x) => x.category === 'static')?.name;
+    // const tag = item?.media_types?.find((x) => x.category === 'static')?.name;
 
-    const customTag = item?.media_types?.find((x) => x.category === 'custom')?.name;
+    // const customTag = item?.media_types?.find((x) => x.category === 'custom')?.name;
 
     const { url: iamge_url, ipfs_url, mimetype } = item?.asset?.content ?? {};
     const img = iamge_url ?? ipfs_url;
@@ -177,8 +189,7 @@ const AssetCard = ({
     const canEdit = (currentUserHaveNodes?.[0] && haveAmount) || haveSaleByEscrow || collected;
 
     const haveAuction = useMemo(() => {
-        const auction = currentUserHaveNodes?.find((node) => checkAuction(node));
-        return auction;
+        return currentUserHaveNodes?.find((node) => checkAuction(node));
     }, [currentUserHaveNodes]);
 
     const canFollowAndVoted = isLoggedIn && user?.username !== creator?.username;
@@ -247,7 +258,7 @@ const AssetCard = ({
 
         if (canFollowAndVoted && !disableVoted && user?.role !== ANONYMOUS) {
             setDisableVoted(true);
-            return dispatch(upvoteAsset(guid)).then((res) => {
+            return dispatch(upvoteAsset(guid)).then(() => {
                 setDisableVoted(false);
             });
         }
@@ -261,7 +272,7 @@ const AssetCard = ({
 
         if (canFollowAndVoted && !disableVoted && user?.role !== ANONYMOUS) {
             setDisableVoted(true);
-            return dispatch(unUpvoteAsset(guid)).then((res) => {
+            return dispatch(unUpvoteAsset(guid)).then(() => {
                 setDisableVoted(false);
             });
         }
@@ -270,7 +281,7 @@ const AssetCard = ({
     const toFavorites = () => {
         if (canFollowAndVoted && !disableFollowing) {
             setDisableFollowing(true);
-            return dispatch(toFavoritesAssets(guid)).then((res) => {
+            return dispatch(toFavoritesAssets(guid)).then(() => {
                 setDisableFollowing(false);
             });
         }
@@ -282,7 +293,7 @@ const AssetCard = ({
     const removeFromFavorites = () => {
         if (canFollowAndVoted && !disableFollowing) {
             setDisableFollowing(true);
-            return dispatch(removeFromFavoritesAssets(guid)).then((res) => {
+            return dispatch(removeFromFavoritesAssets(guid)).then(() => {
                 setDisableFollowing(false);
             });
         }
@@ -409,43 +420,22 @@ const AssetCard = ({
             setOpenNsfwModal(true);
         }
     };
-    if (mobile) {
-        return (
-            <Link className="w-100 h-100" to={`/asset/${assetId}`}>
-                <Card
-                    className={`card asset-card h-100 ${isDisabled ? 'card-disabled' : ''} ${
-                        isSeries ? 'card-series' : ''
-                    }`}
-                    ref={cardRef}
-                    onClick={clickOnCard}
-                >
-                    <Box className={`asset-file-container ${is_nsfw ? 'asset-img-blur' : ''}`}>
-                        <Suspense fallback={<Loading />}>
-                            <LoadImage
-                                content_type={content_type}
-                                img={img}
-                                thumbnail={thumbnail}
-                            />
-                        </Suspense>
-                    </Box>
-                </Card>
-            </Link>
-        );
-    }
 
     return (
         <>
-            <Link className="w-100 h-100" to={`/asset/${assetId}`}>
+            <Link className={clsx('w-100', { 'h-100': !galleryMode })} to={`/asset/${assetId}`}>
                 <Card
-                    className={`card asset-card h-100 ${isDisabled ? 'card-disabled' : ''} ${
-                        isSeries ? 'card-series' : ''
-                    }`}
+                    className={`card asset-card ${galleryMode ? '' : 'h-100'} ${
+                        isDisabled ? 'card-disabled' : ''
+                    } ${isSeries ? 'card-series' : ''}`}
                     ref={cardRef}
                     onClick={clickOnCard}
                 >
                     <Box
                         position="relative"
-                        className={`asset-file-container ${is_nsfw ? 'asset-img-blur' : ''}`}
+                        className={`asset-file-container ${galleryMode ? '' : 'h-100'} ${
+                            is_nsfw ? 'asset-img-blur' : ''
+                        }`}
                     >
                         <CardTags
                             tags={[
@@ -537,6 +527,7 @@ const AssetCard = ({
                                     className="card-top-action"
                                 >
                                     <FormControlLabel
+                                        label=""
                                         className="favorite-checkbox"
                                         control={
                                             <Checkbox
@@ -709,7 +700,7 @@ const AssetCard = ({
                                         fontWeight="bold"
                                         fontFamily="h1.fontFamily"
                                         ml="0.5rem"
-                                        className={`${!isPrivate && 'link'} primary ellipsis`}
+                                        className={`${!isPrivate && 'link'} font-primary ellipsis`}
                                     >
                                         {isPrivate
                                             ? showedUser?.username
@@ -758,7 +749,11 @@ const AssetCard = ({
                                                         onClick={upvote}
                                                     />
                                                 )}
-                                                <Box className="vote-count" component="span" ml={1}>
+                                                <Box
+                                                    className="vote-count font-primary"
+                                                    component="span"
+                                                    ml={1}
+                                                >
                                                     {vote_count}
                                                 </Box>
                                             </Box>
@@ -898,7 +893,6 @@ AssetCard.propTypes = {
     isBid: PropTypes.bool,
     cancelLoading: PropTypes.bool,
     collected: PropTypes.bool,
-    mobile: PropTypes.bool,
     selectable: PropTypes.bool,
     selected: PropTypes.bool,
     isSeries: PropTypes.bool,
@@ -925,6 +919,7 @@ AssetCard.propTypes = {
     updateAsset: PropTypes.func,
     afterMakeAnOffer: PropTypes.func,
     deleteAssetFromReducer: PropTypes.func,
+    galleryMode: PropTypes.bool,
 };
 
 export default AssetCard;

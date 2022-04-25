@@ -170,10 +170,10 @@
 
     .home-products {
         .home-product {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             .img-wrapper {
-                margin-bottom: 0;
+                margin-bottom: 15px !important;
             }
 
             &-arrow {
@@ -204,6 +204,39 @@
 }
 
 @media (max-width: $screen-smm) {
+    .banner {
+        &-bg {
+            &:nth-of-type(1),
+            &:nth-of-type(2),
+            &:nth-of-type(3) {
+                position: absolute;
+                width: 50vw;
+                height: 50vw;
+                border-radius: 50%;
+                filter: blur(170px);
+                z-index: 0;
+                opacity: 0.8;
+            }
+            &:nth-of-type(1) {
+                background-color: $brand-orange;
+                top: 0%;
+                left: 50%;
+                transform: translate(-50%, 0%);
+            }
+
+            &:nth-of-type(2) {
+                background-color: $brand-red;
+                top: 40%;
+                left: -20%;
+            }
+
+            &:nth-of-type(3) {
+                background-color: $brand-blue;
+                top: 55%;
+                right: -5%;
+            }
+        }
+    }
     .home-products {
         .home-product {
             .img-wrapper {
@@ -233,11 +266,6 @@
             .left {
                 width: calc(60% - 16px);
             }
-        }
-
-        .banner-left {
-            order: 2;
-            margin-top: 3rem;
         }
     }
 
@@ -269,10 +297,6 @@
 
     .home-best-voted {
         padding: 40px 0 80px;
-
-        .MuiContainer-root {
-            padding: 1rem;
-        }
     }
 
     .home-assets-tag {
@@ -305,26 +329,48 @@
 
     .banner {
         background-size: 180px 150px;
-        padding: 20px 0 80px;
+        padding: 120px 0 80px;
+        &-bg {
+            &:nth-of-type(1),
+            &:nth-of-type(2),
+            &:nth-of-type(3) {
+                position: absolute;
+                width: 70vw;
+                height: 70vw;
+                border-radius: 50%;
+                filter: blur(120px);
+                z-index: 0;
+                opacity: 0.8;
+            }
+            &:nth-of-type(1) {
+                background-color: $brand-orange;
+                top: 0%;
+                left: 50%;
+                transform: translate(-50%, 0%);
+            }
+
+            &:nth-of-type(2) {
+                background-color: $brand-red;
+                top: 45%;
+                left: -20%;
+            }
+
+            &:nth-of-type(3) {
+                background-color: $brand-blue;
+                top: 60%;
+                right: -5%;
+            }
+        }
 
         .search-box {
             background-color: #ffffffa0;
             padding-left: 1rem;
-        }
-
-        button {
-            background-color: #ffffffa0;
-            color: white;
         }
     }
 
     .home-about {
         padding: 40px 0 60px;
         background-image: none;
-
-        img {
-            width: 130px;
-        }
 
         &:after {
             display: none;

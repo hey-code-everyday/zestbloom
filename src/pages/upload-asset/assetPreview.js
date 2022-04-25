@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addAssets, startUpload, finishUpload } from 'redux/asset/actions';
-import { getIPFSHash, getAlgorandAccountInfo } from 'redux/algorand/actions';
+import { getIPFSHash } from 'redux/algorand/actions';
+import { getBasicAccountInfo } from 'transactions/algorand/getAccount';
 import {
     Typography,
     DialogContent,
@@ -75,9 +76,9 @@ const AssetPreview = ({
         endUpload();
     };
 
-    const getAccountInfo = (account) => {
-        return dispatch(getAlgorandAccountInfo(account));
-    };
+    //const getAccountInfo = (account) => {
+    //    return dispatch(getAlgorandAccountInfo(account));
+    //};
 
     const gettingIPFSHash = async (data) => {
         return await dispatch(getIPFSHash(data));
@@ -123,7 +124,7 @@ const AssetPreview = ({
                 addAssetToDB,
                 getErrorMessage,
                 zestBloomManagerAddress,
-                getAccountInfo,
+                getBasicAccountInfo,
                 walletFallback,
             });
         } catch (error) {

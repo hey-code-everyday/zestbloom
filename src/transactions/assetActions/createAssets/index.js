@@ -21,7 +21,7 @@ export const createAsset = async ({
     addAssetToDB,
     getErrorMessage,
     zestBloomManagerAddress,
-    getAccountInfo,
+    getBasicAccountInfo,
     walletFallback,
 }) => {
     try {
@@ -40,7 +40,7 @@ export const createAsset = async ({
         const accountPositiveAmount = await checkAccountAmount(
             account.address,
             101000,
-            getAccountInfo,
+            getBasicAccountInfo,
         );
         if (!accountPositiveAmount) {
             const message = 'Your account balance is not enough for this transaction.';
@@ -227,14 +227,18 @@ function toJson(data) {
     return JSON.stringify(data);
 }
 
-async function checkAccountAmount(account, transactionFee, getAccountInfo) {
-    const accountInfo = await getAccountInfo(account);
+async function checkAccountAmount(account, transactionFee, getBasicAccountInfo) {
+    const accountInfo = await getBasicAccountInfo(account);
     if (!accountInfo?.account) {
         const message = 'This address does not exist or your account balance is 0';
         throw new Error(message);
     }
-
-    const minBalance = accountInfo.account['min-balance'];
+    // FIXME: The below min balance calculation may be inaccurate
+    //  needs to account for contracts too
+    const minBalance = accountInfo.account
+        ? accountInfo.account['total-assets-opted-in'] * 0.1 + 0.1
+        : 0.1;
+    // accountInfo.assets ? accountInfo.assets.length * 0.1 + 0.1 : 0.1;  // [OLD]
     const amount = accountInfo.account.amount;
 
     const balanceAfterTransaction = amount - transactionFee;

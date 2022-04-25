@@ -106,21 +106,21 @@ const DropdownSaleType = ({ contractType, setContractType }) => {
                                     <MenuItem onClick={() => chooseType('list-for-offer')}>
                                         List for Offer (Escrow)
                                     </MenuItem>
-                                    {/* <MenuItem onClick={() => chooseType('auction-escrow')}>
+                                    <MenuItem onClick={() => chooseType('auction-escrow')}>
                                         Auction (Escrow)
-                                    </MenuItem> */}
+                                    </MenuItem>
                                     <MenuItem
                                         onClick={() => chooseType('list-price-clawback')}
                                         disabled
                                     >
                                         List Price (Clawback)
                                     </MenuItem>
-                                    {/* <MenuItem
+                                    <MenuItem
                                         onClick={() => chooseType('auction-clawback')}
                                         disabled
                                     >
                                         Auction (Clawback)
-                                    </MenuItem> */}
+                                    </MenuItem>
                                 </MenuList>
                             </ClickAwayListener>
                         </Paper>

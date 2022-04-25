@@ -3,14 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { AppBar, Toolbar, Container, Box, Avatar, Typography, IconButton } from '@material-ui/core';
+import { AppBar, Toolbar, Container, Box, Avatar, IconButton } from '@material-ui/core';
 import { Close, Menu, WbSunny, Brightness2 } from '@material-ui/icons';
 
 import {
     setMyAlgoAccount,
     setWallets,
+    verifyWallets,
     setNonLoggedMyAlgoAccount,
     toClearWallet,
+    setNotification,
     changeUiMode,
 } from 'redux/profile/actions';
 import { needToLoginAction, logout } from 'redux/auth/actions';
@@ -23,30 +25,23 @@ import {
     Login,
     ForgotPassword,
     VerifyForgotPasswordEmail,
+    BecomeCreator,
+    RequestSent,
 } from 'components/elements';
 import algorandLogo from 'assets/img/algorand-logo.svg';
 import { AboutAnchorContext } from '../MainRoute';
-import { MARKETPLACE } from '../../../configs/routes';
 import ChangeWallet from 'components/elements/modal/changeWallet';
 import LottieContainer from 'components/shared/LottieContainer';
 import UserNotifications from '../user-notifications';
 import { connectToMyAlgo, nonLoggedConnect } from 'transactions/algorand/connectWallet';
-import { useOutsideClick } from 'hooks/useOutsideClick';
 import useWindowDimensions from 'hooks/useWindowDimensions';
-import { CREATOR } from 'configs';
-
-import IconUser from 'assets/img/icon-user.svg';
-import IconBook from 'assets/img/icon-book.svg';
-import IconHammer from 'assets/img/icon-hammer.svg';
-import IconSettings from 'assets/img/icon-settings.svg';
-import IconStore from 'assets/img/icon-store.svg';
-import IconNotifications from 'assets/img/notifications.svg';
-import IconNotificationsActive from 'assets/img/notifications_active.svg';
-import IconLogout from 'assets/img/logout.svg';
+import { CREATOR, ANONYMOUS } from 'configs';
 
 const Header = ({ hasSearch }) => {
     const history = useHistory();
     const path = history.location.pathname;
+    const [becomeCreatorDialog, setBecomeCreatorDialog] = useState(false);
+    const [requestSentDialog, setRequestSentDialog] = useState(false);
     /*User Notifications State*/
     const [userNotifications, setNotifications] = useState(false);
     const [scrolled, setScrolled] = useState(false);
@@ -72,7 +67,6 @@ const Header = ({ hasSearch }) => {
     const { isMobile } = useWindowDimensions();
 
     const notifyRef = useRef(null);
-    const mobileMenuRef = useRef(null);
 
     const unreadedNotifications = useMemo(() => {
         const unreaded = allNotifications?.find((x) => x.is_unread);
@@ -82,15 +76,6 @@ const Header = ({ hasSearch }) => {
     const notificationsToShow = useMemo(() => {
         return isMobile ? (notifications ?? []).slice(0, 1) : notifications;
     }, [isMobile, notifications]);
-
-    const openUserNotifications = async (withDelay = false) => {
-        if (withDelay) await onClickMenu();
-        setNotifications(!userNotifications);
-    };
-
-    const closeUserNotifications = () => {
-        setNotifications(false);
-    };
 
     const onScroll = useCallback(() => {
         setScrolled(window.pageYOffset > 20);
@@ -117,9 +102,9 @@ const Header = ({ hasSearch }) => {
     }, [onScroll]);
 
     useEffect(() => {
-        const conectedWallets = JSON.parse(localStorage.getItem('wallets'));
-        if (conectedWallets) {
-            dispatch(setWallets(conectedWallets));
+        const connectedWallets = JSON.parse(localStorage.getItem('wallets'));
+        if (connectedWallets) {
+            dispatch(setWallets(connectedWallets));
         }
     }, [dispatch]);
 
@@ -143,13 +128,6 @@ const Header = ({ hasSearch }) => {
         if (notificationIcon) notificationIcon.title = unReadedNotifyCount;
     }, [notifyRef, unReadedNotifyCount]);
 
-    const onOpenChangeWallet = () => {
-        setChangeWallet(true);
-    };
-    const onCloseChangeWallet = () => {
-        setChangeWallet(false);
-    };
-
     const onScrollToAbout = () =>
         window.scrollTo({ top: anchorRef.current.offsetTop, behavior: 'smooth' });
 
@@ -159,29 +137,9 @@ const Header = ({ hasSearch }) => {
             : dispatch(setNonLoggedMyAlgoAccount(getAccounts));
     };
 
-    const openProfileMenu = (e) => {
-        setProfileMenuEl(e.currentTarget);
-    };
-
-    const closeProfileMenu = () => {
-        setProfileMenuEl(null);
-    };
-
     const onOpenSignupDialog = () => {
-        onCloseLoginDialog();
+        setLoginDialog(false);
         setSignupDialog(true);
-    };
-
-    const onCloseSignupDialog = () => {
-        setSignupDialog(false);
-    };
-
-    const onOpenVerifyDialog = () => {
-        setVerifyDialog(true);
-    };
-
-    const onCloseVerifyDialog = () => {
-        setVerifyDialog(false);
     };
 
     const handleLogout = async () => {
@@ -194,118 +152,116 @@ const Header = ({ hasSearch }) => {
         });
     };
 
-    const onOpenLoginDialog = async (withDelay = false) => {
-        if (withDelay) await onClickMenu();
+    const onOpenLoginDialog = () => {
+        closeSideBars();
         if (isLoggedIn) {
             handleLogout();
             return;
         }
-
-        onCloseSignupDialog();
+        setSignupDialog(false);
         setLoginDialog(true);
     };
 
-    const onCloseLoginDialog = () => {
-        setLoginDialog(false);
-    };
-
     const onOpenForgotPasswordDialog = () => {
-        onCloseLoginDialog();
+        setLoginDialog(false);
         setForgotPasswordDialog(true);
     };
 
-    const onCloseForgotPasswordDialog = () => {
-        setForgotPasswordDialog(false);
-    };
-
-    const onOpenVerifyForgotPasswordDialog = () => {
-        setVerifyForgotPasswordDialog(true);
-    };
-
-    const onCloseVerifyForgotPasswordDialog = () => {
-        setVerifyForgotPasswordDialog(false);
-    };
-
-    const onClickMenu = (cb) => {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                closeUserNotifications();
-                setMobileMenuVisible(!mobileMenuVisible);
-                resolve(true);
-            }, 500);
-        });
-    };
-
-    const hideMenu = () => {
+    const closeSideBars = () => {
+        setNotifications(false);
         setMobileMenuVisible(false);
     };
 
     const onClickProfile = async () => {
+        closeSideBars();
         if (user?.username) {
-            await onClickMenu();
             history.push(`/profile/${user.username}`);
         }
     };
 
     const onClickMarketplace = async () => {
-        await onClickMenu();
+        closeSideBars();
         history.push('/marketplace');
     };
 
     const onClickAuction = async () => {
-        await onClickMenu();
+        closeSideBars();
         history.push('/marketplace?status=auction');
     };
     const canCreate = user?.role === CREATOR && window.location.pathname !== '/upload-asset';
 
-    const onConnectWallet = async () => {
-        await onClickMenu();
-        isLoggedIn
-            ? connectToMyAlgo(setWalletsToUser, setConnectLoading)
-            : nonLoggedConnect(setWalletsToUser);
+    const toVerifyWallets = (wallets) => {
+        return dispatch(verifyWallets(wallets));
     };
 
-    useOutsideClick(mobileMenuRef, hideMenu);
+    const giveNotification = (message) => {
+        dispatch(setNotification(message));
+    };
+
+    const onConnectWallet = async () => {
+        closeSideBars();
+        isLoggedIn
+            ? connectToMyAlgo(
+                  setWalletsToUser,
+                  setConnectLoading,
+                  [],
+                  toVerifyWallets,
+                  giveNotification,
+              )
+            : nonLoggedConnect(setWalletsToUser);
+    };
 
     const switchLightMode = () => dispatch(changeUiMode(!isDarkMode));
 
     return (
         <>
             {/*  modals start */}
+            <BecomeCreator
+                creatorDialog={becomeCreatorDialog}
+                onCloseCreatorDialog={() => setBecomeCreatorDialog(false)}
+                onOpenRequestSentDialog={() => {
+                    setBecomeCreatorDialog(false);
+                    setRequestSentDialog(true);
+                }}
+            />
+            <RequestSent
+                requestSentDialog={requestSentDialog}
+                onCloseRequestSentDialog={() => setRequestSentDialog(false)}
+            />
             <SignUp
                 signupDialog={signupDialog}
-                onCloseSignupDialog={onCloseSignupDialog}
+                onCloseSignupDialog={() => setSignupDialog(false)}
                 onOpenLoginDialog={onOpenLoginDialog}
-                onOpenVerifyDialog={onOpenVerifyDialog}
+                onOpenVerifyDialog={() => setVerifyDialog(true)}
             />
             <VerifyYourEmail
                 verifyDialog={verifyDialog}
-                onCloseVerifyDialog={onCloseVerifyDialog}
+                onCloseVerifyDialog={() => setVerifyDialog(false)}
             />
             {loginDialog && (
                 <Login
                     loginDialog={loginDialog}
-                    onCloseLoginDialog={onCloseLoginDialog}
+                    onCloseLoginDialog={() => setLoginDialog(false)}
                     onOpenSignupDialog={onOpenSignupDialog}
                     onOpenForgotPasswordDialog={onOpenForgotPasswordDialog}
                 />
             )}
             <VerifyForgotPasswordEmail
                 verifyForgotPasswordDialog={verifyForgotPasswordDialog}
-                onCloseVerifyForgotPasswordDialog={onCloseVerifyForgotPasswordDialog}
+                onCloseVerifyForgotPasswordDialog={() => setVerifyForgotPasswordDialog(false)}
                 emailFromForgotPassword={emailFromForgotPassword}
             />
             <ForgotPassword
                 forgotPasswordDialog={forgotPasswordDialog}
-                onCloseForgotPasswordDialog={onCloseForgotPasswordDialog}
+                onCloseForgotPasswordDialog={() => setForgotPasswordDialog(false)}
                 onOpenLoginDialog={onOpenLoginDialog}
-                onOpenVerifyForgotPasswordDialog={onOpenVerifyForgotPasswordDialog}
+                onOpenVerifyForgotPasswordDialog={() => setVerifyForgotPasswordDialog(true)}
                 setEmailFromForgotPassword={setEmailFromForgotPassword}
             />
             {selectedWallet && (
                 <ChangeWallet
                     changeWallet={changeWallet}
-                    onCloseChangeWallet={onCloseChangeWallet}
+                    onCloseChangeWallet={() => setChangeWallet(false)}
                 />
             )}
             {/*User Notifications*/}
@@ -313,7 +269,7 @@ const Header = ({ hasSearch }) => {
                 <UserNotifications
                     notifications={userNotifications}
                     setNotifications={setNotifications}
-                    onClose={closeUserNotifications}
+                    onClose={() => setNotifications(false)}
                 />
             )}
             <Box className="notification-container">
@@ -329,245 +285,223 @@ const Header = ({ hasSearch }) => {
             </Box>
             {/* modals end */}
 
-            {isMobile ? (
-                <>
-                    <Box className="header">
-                        <Link to="" className="logo full-width">
-                            <Box display="flex" alignItems="center" justifyContent="center">
-                                <Logo type="logoIcon" width="24" />
-                                <Typography className="header-zb-title" variant="h3">
-                                    ZESTBLOOM
-                                </Typography>
-                            </Box>
-                        </Link>
-                    </Box>
-
-                    <Box className="menu-container" ref={mobileMenuRef}>
-                        <Box onClick={onClickMenu} display="flex" px={1.5} py={3}>
-                            {mobileMenuVisible ? (
-                                <Close className="menu-icon" fontSize="large" />
+            <AppBar
+                position={'fixed'}
+                className={`header animation-top-down ${
+                    scrolled ? 'header-scrolled shadow' : 'bg-none'
+                } ${path !== '/' ? 'top-0' : ''}`}
+            >
+                <Container maxWidth="xl">
+                    <Toolbar disableGutters>
+                        {/*For window width > 980*/}
+                        <Box
+                            display="flex"
+                            alignItems="center"
+                            flexGrow="1"
+                            className="desktop-only"
+                        >
+                            {!showSearch ? (
+                                <Link to="/" className="logo">
+                                    <Logo type="logo" width="203" />
+                                </Link>
                             ) : (
-                                <Menu className="menu-icon" fontSize="large" />
+                                <Box display="flex" alignItems="center">
+                                    <Link to="" className="logo">
+                                        <Logo type="logoIcon" width="53" />
+                                    </Link>
+                                    <StartCollectingSearch />
+                                </Box>
                             )}
                         </Box>
-                        {mobileMenuVisible && (
-                            <Box className="mobile-menu-active">
-                                <Box
-                                    className="mobile-menu-item"
-                                    onClick={() => onOpenLoginDialog(true)}
-                                >
-                                    {isLoggedIn ? (
-                                        <>
-                                            <img src={IconLogout} alt="Logout" />
-                                            <span>Log Out</span>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <img src={IconUser} alt="Sign in" />
-                                            <span>Sign In</span>
-                                        </>
-                                    )}
-                                </Box>
-                                <Box className="mobile-menu-item" onClick={onConnectWallet}>
-                                    {connectLoading ? (
-                                        <div className="menu-btn menu-btn-algo">
-                                            <LottieContainer
-                                                containerStyles={{
-                                                    height: '46px',
-                                                    width: '100%',
-                                                    marginTop: 12,
-                                                }}
-                                                lottieStyles={{ width: '50px' }}
-                                            />
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <img src={IconBook} alt="Connect Wallet" />
-                                            <span>{`${
-                                                selectedWallet ? 'Change' : 'Connect'
-                                            } Wallet`}</span>
-                                        </>
-                                    )}
-                                </Box>
-                                <Box
-                                    className={`mobile-menu-item ${isLoggedIn ? '' : 'disabled'}`}
-                                    onClick={onClickProfile}
-                                >
-                                    <img src={IconSettings} alt="Profile" />
-                                    <span>Profile</span>
-                                </Box>
-                                <Box className="mobile-menu-item" onClick={onClickMarketplace}>
-                                    <img src={IconStore} alt="Marketplace" />
-                                    <span>Marketplace</span>
-                                </Box>
-                                <Box
-                                    className={`mobile-menu-item ${isLoggedIn ? '' : 'disabled'}`}
-                                    onClick={() => openUserNotifications(true)}
-                                >
-                                    {
-                                        <img
-                                            src={
-                                                unreadedNotifications && unReadedNotifyCount
-                                                    ? IconNotificationsActive
-                                                    : IconNotifications
-                                            }
-                                            alt="Notifications"
-                                        />
-                                    }
-                                    <span>Notifications</span>
-                                </Box>
-                                <Box className="mobile-menu-item" onClick={onClickAuction}>
-                                    <img src={IconHammer} alt="Auction" />
-                                    <span>Auction</span>
-                                </Box>
-                            </Box>
-                        )}
-                    </Box>
-                </>
-            ) : (
-                <AppBar
-                    position={'fixed'}
-                    className={`header animation-top-down ${
-                        scrolled ? 'header-scrolled shadow' : 'bg-none'
-                    } ${path !== '/' ? 'top-0' : ''}`}
-                >
-                    <Container maxWidth="xl">
-                        <Toolbar disableGutters>
-                            {/*For window width > 980*/}
-                            <Box
-                                display={{ xs: 'none', md: 'flex' }}
-                                alignItems="center"
-                                flexGrow="1"
-                            >
-                                {!showSearch ? (
-                                    <Link to="/" className="logo">
-                                        <Logo type="logo" width="203" />
-                                    </Link>
-                                ) : (
-                                    <Box display="flex" alignItems="center">
-                                        <Link to="" className="logo">
-                                            <Logo type="logoIcon" width="53" />
-                                        </Link>
-                                        <StartCollectingSearch />
-                                    </Box>
-                                )}
-                            </Box>
-                            {/*For window width (600-980) */}
-                            <Box
-                                display={{ xs: 'none', sm: 'flex', md: 'none' }}
-                                alignItems="center"
-                                flexGrow="1"
-                            >
-                                <Link to="/" className="logo">
-                                    <Logo type="logo" width="160" />
-                                </Link>
-                            </Box>
+                        <Box alignItems="center" flexGrow="1" className="mobile-only">
+                            <Link to="/" className="logo">
+                                <Logo type="logo" width="160" />
+                            </Link>
+                        </Box>
 
-                            <ul className="menu">
-                                {path === '/' ? (
-                                    <li className="menu-link menu-link-about font-primary">
-                                        <button onClick={onScrollToAbout}>About Us</button>
-                                    </li>
-                                ) : (
-                                    ''
-                                )}
-                                {canCreate && (
-                                    <li className="menu-link font-primary">
-                                        <Link to="/upload-asset">
-                                            <button>Create</button>
-                                        </Link>
-                                    </li>
-                                )}
-
-                                <li className="menu-link font-primary">
-                                    <Link to="/marketplace">
-                                        <button>Marketplace</button>
+                        <ul className="menu desktop-only">
+                            {path === '/' ? (
+                                <li className="menu-link menu-link-about font-primary">
+                                    <button onClick={onScrollToAbout}>About Us</button>
+                                </li>
+                            ) : (
+                                ''
+                            )}
+                            {canCreate && (
+                                <li className="menu-btn">
+                                    <Link to="/upload-asset">
+                                        <button className="btn-green">Create</button>
                                     </Link>
                                 </li>
-                                <>
-                                    {!selectedWallet && !connectLoading && (
-                                        <li className="menu-btn menu-btn-wallet">
-                                            <button onClick={onConnectWallet} className="btn-green">
-                                                Connect Wallet
-                                            </button>
-                                        </li>
-                                    )}
-                                    {isLoggedIn && (
-                                        <>
-                                            <li
-                                                className="menu-link font-primary"
-                                                onClick={openProfileMenu}
-                                            >
-                                                <Avatar alt={user?.first_name} src={user?.avatar} />
-                                            </li>
-                                            <ProfileMenu
-                                                anchorEl={profileMenuEl}
-                                                closeMenu={closeProfileMenu}
-                                                setNotifications={setNotifications}
-                                            />
-                                            <li className="menu-notif">
-                                                <button
-                                                    className={`notif-btn hover-opacity ${
-                                                        unreadedNotifications && unReadedNotifyCount
-                                                            ? 'unread'
-                                                            : ''
-                                                    }`}
-                                                    ref={notifyRef}
-                                                    onClick={openUserNotifications}
-                                                >
-                                                    <i
-                                                        className="icon-notifications-outline"
-                                                        style={{ fontSize: 24 }}
-                                                    />
-                                                </button>
-                                            </li>
-                                        </>
-                                    )}
-                                    {selectedWallet && !connectLoading && (
-                                        <li
-                                            className="menu-btn menu-btn-algo"
-                                            onClick={onOpenChangeWallet}
-                                            style={{ cursor: 'pointer' }}
-                                        >
-                                            <img src={algorandLogo} alt="Algorand" />
-                                        </li>
-                                    )}
-                                    {connectLoading && (
-                                        <li
-                                            style={{ width: '100px' }}
-                                            className="menu-btn menu-btn-algo"
-                                        >
-                                            <LottieContainer
-                                                containerStyles={{
-                                                    height: '46px',
-                                                    width: '100%',
-                                                }}
-                                                lottieStyles={{ width: '50px' }}
-                                            />
-                                        </li>
-                                    )}
-                                </>
-                                {!isLoggedIn && (
-                                    <li className="menu-btn">
-                                        <button onClick={onOpenLoginDialog} className="btn-green">
-                                            Sign In
+                            )}
+                            {user?.role && user?.role !== CREATOR && user?.role !== ANONYMOUS ? (
+                                <li className="menu-btn">
+                                    <button
+                                        className="btn-green"
+                                        onClick={() => setBecomeCreatorDialog(true)}
+                                    >
+                                        Become a Creator
+                                    </button>
+                                </li>
+                            ) : null}
+
+                            <li className="menu-link font-primary">
+                                <Link to="/marketplace">
+                                    <button>Marketplace</button>
+                                </Link>
+                            </li>
+                            <>
+                                {!selectedWallet && !connectLoading && (
+                                    <li className="menu-btn menu-btn-wallet">
+                                        <button onClick={onConnectWallet} className="btn-green">
+                                            Connect Wallet
                                         </button>
                                     </li>
                                 )}
-                                <li>
-                                    <IconButton onClick={switchLightMode}>
-                                        {isDarkMode ? (
-                                            <Brightness2 className="icon-btn-yellow" />
-                                        ) : (
-                                            <WbSunny className="icon-btn-green" />
-                                        )}
-                                    </IconButton>
+                                {isLoggedIn && (
+                                    <>
+                                        <li
+                                            className="menu-link font-primary"
+                                            onClick={(e) => setProfileMenuEl(e.currentTarget)}
+                                        >
+                                            <Avatar alt={user?.first_name} src={user?.avatar} />
+                                        </li>
+                                        <ProfileMenu
+                                            anchorEl={profileMenuEl}
+                                            closeMenu={() => setProfileMenuEl(null)}
+                                            setNotifications={setNotifications}
+                                        />
+                                        <li className="menu-notif">
+                                            <button
+                                                className={`notif-btn hover-opacity ${
+                                                    unreadedNotifications && unReadedNotifyCount
+                                                        ? 'unread'
+                                                        : ''
+                                                }`}
+                                                ref={notifyRef}
+                                                onClick={() => setNotifications(false)}
+                                            >
+                                                <i
+                                                    className="icon-notifications-outline"
+                                                    style={{ fontSize: 24 }}
+                                                />
+                                            </button>
+                                        </li>
+                                    </>
+                                )}
+                                {selectedWallet && !connectLoading && (
+                                    <li
+                                        className="menu-btn menu-btn-algo"
+                                        onClick={() => setChangeWallet(true)}
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        <img src={algorandLogo} alt="Algorand" />
+                                    </li>
+                                )}
+                                {connectLoading && (
+                                    <li
+                                        style={{ width: '100px' }}
+                                        className="menu-btn menu-btn-algo"
+                                    >
+                                        <LottieContainer
+                                            containerStyles={{
+                                                height: '46px',
+                                                width: '100%',
+                                            }}
+                                            lottieStyles={{ width: '50px' }}
+                                        />
+                                    </li>
+                                )}
+                            </>
+                            {!isLoggedIn && (
+                                <li className="menu-btn">
+                                    <button onClick={onOpenLoginDialog} className="btn-green">
+                                        Sign In
+                                    </button>
                                 </li>
-                            </ul>
-                        </Toolbar>
-                    </Container>
-                </AppBar>
-            )}
+                            )}
+                            <li>
+                                <IconButton onClick={switchLightMode}>
+                                    {isDarkMode ? (
+                                        <Brightness2 className="icon-btn-yellow" />
+                                    ) : (
+                                        <WbSunny className="icon-btn-green" />
+                                    )}
+                                </IconButton>
+                            </li>
+                        </ul>
+                        <Box className="menu-container mobile-only">
+                            <Box display="flex" alignItems="center">
+                                <IconButton onClick={switchLightMode}>
+                                    {isDarkMode ? (
+                                        <Brightness2 className="icon-btn-yellow" />
+                                    ) : (
+                                        <WbSunny className="icon-btn-green" />
+                                    )}
+                                </IconButton>
+                                {mobileMenuVisible ? (
+                                    <Close
+                                        onClick={() => setMobileMenuVisible(false)}
+                                        className="menu-icon"
+                                        fontSize="large"
+                                    />
+                                ) : (
+                                    <Menu
+                                        onClick={() => setMobileMenuVisible(true)}
+                                        className="menu-icon"
+                                        fontSize="large"
+                                    />
+                                )}
+                            </Box>
+                        </Box>
+                    </Toolbar>
+                </Container>
+            </AppBar>
+            <Box
+                className={`mobile-only mobile-header-menu-container ${
+                    mobileMenuVisible ? 'mobile-menu-show' : 'mobile-menu-hide'
+                }`}
+            >
+                <Box className="mobile-menu-item" onClick={() => onOpenLoginDialog(true)}>
+                    {isLoggedIn ? <span>Log Out</span> : <span>Sign In</span>}
+                </Box>
+                <Box className="mobile-menu-item" onClick={onConnectWallet}>
+                    {connectLoading ? (
+                        <div className="menu-btn menu-btn-algo">
+                            <LottieContainer
+                                containerStyles={{
+                                    height: '46px',
+                                    width: '100%',
+                                    marginTop: 12,
+                                }}
+                                lottieStyles={{ width: '50px' }}
+                            />
+                        </div>
+                    ) : (
+                        <>
+                            <span>{`${selectedWallet ? 'Change' : 'Connect'} Wallet`}</span>
+                        </>
+                    )}
+                </Box>
+                <Box
+                    className={`mobile-menu-item ${isLoggedIn ? '' : 'disabled'}`}
+                    onClick={onClickProfile}
+                >
+                    <span>Profile</span>
+                </Box>
+                <Box className="mobile-menu-item" onClick={onClickMarketplace}>
+                    <span>Marketplace</span>
+                </Box>
+                <Box
+                    className={`mobile-menu-item ${isLoggedIn ? '' : 'disabled'}`}
+                    onClick={() => setNotifications(false)}
+                >
+                    <span>Notifications</span>
+                </Box>
+                <Box className="mobile-menu-item" onClick={onClickAuction}>
+                    <span>Auction</span>
+                </Box>
+            </Box>
         </>
     );
 };
@@ -575,4 +509,5 @@ const Header = ({ hasSearch }) => {
 Header.propTypes = {
     hasSearch: PropTypes.bool,
 };
+
 export default Header;

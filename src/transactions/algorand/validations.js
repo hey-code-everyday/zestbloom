@@ -38,8 +38,8 @@ export async function checkAccountAmount(account, transactionFee, getAccountInfo
             const message = 'This address does not exists or your account balance is 0';
             throw new Error(message);
         }
-
-        const minBalance = accountInfo.account['min-balance'];
+        const minBalance = accountInfo.assets ? accountInfo.assets.length * 0.1 + 0.1 : 0.1;
+        // const minBalance = accountInfo.account['min-balance'];
         const amount = accountInfo.account.amount;
 
         const balanceAfterTransaction = amount - transactionFee;

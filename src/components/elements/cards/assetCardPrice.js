@@ -31,14 +31,16 @@ const AssetCardPrice = ({
     return (
         <Grid item>
             {isOffer && offers.length > 1 ? (
-                <Box fontSize={20} fontWeight="bold" className="price-algo">
+                <Box fontSize={20} fontWeight="bold" className="price-algo font-primary">
                     {offers.length}&nbsp;New
                 </Box>
             ) : (
                 price && (
                     <Box fontSize={20} fontWeight="bold" className="price-algo">
                         <img src={AlgoFont} alt="Algo" />
-                        <span style={{ marginLeft: '5px' }}>{price}</span>
+                        <span style={{ marginLeft: '5px' }} className="font-primary">
+                            {price}
+                        </span>
                     </Box>
                 )
             )}

@@ -1,28 +1,35 @@
 import React, { useEffect, useCallback, useState, createContext, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, Box } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { getProfileUser } from 'redux/profile/actions';
 import { empty_user, changeProfileTabesType } from 'redux/profile/actions';
 import LoadingNotFound from 'components/shared/LoadingNotFound';
+import FilterTab from '../marketplace/filterTab/FilterTab';
 import { getAssetsFromWallet } from 'transactions/algorand/validations';
 import Banner from './Banner';
-import Sidebar from './Sidebar';
-import ProfileTabs from './ProfileTabs';
-import ProfileTopMobile from './ProfileTopMobile';
+import ProfileAvatar from './ProfileAvatar';
+import ProfileCollections from './ProfileCollections';
+import DrawerList from '../marketplace/items/fIlters';
+import SidePanel from '../../components/shared/SidePanel';
+import { FILTER_CONFIG } from '../../configs';
 
 export const AssetsFromWallet = createContext(null);
 
 const Profile = () => {
     const dispatch = useDispatch();
     const { username } = useParams();
-    const {
-        user: profileUser,
-        getUserLoading,
-        profileTabesType,
-    } = useSelector((state) => state.profile);
+    const { search } = useLocation();
+    const { user: profileUser, getUserLoading } = useSelector((state) => state.profile);
     const { user: authUser } = useSelector((state) => state.auth);
     const [assetsInWallet, setAssetsInWallet] = useState(null);
+    const [viewMode, setViewMode] = useState('tile');
+    const [drawerOpen, setDrawerOpen] = useState(false);
+    const [filterObj, setFilterObj] = useState({
+        ...FILTER_CONFIG.assetFilter,
+        media_type: [],
+    });
+    const isMyProfile = authUser?.username === username;
 
     const isAuthUser = useMemo(
         () => authUser?.username === username,
@@ -32,6 +39,15 @@ const Profile = () => {
         () => (isAuthUser ? authUser : profileUser),
         [authUser, isAuthUser, profileUser],
     );
+
+    useEffect(() => {
+        const params = new URLSearchParams(search);
+        const assetTagsParam = params.get('assetTags') ? params.get('assetTags').split(',') : [];
+        setFilterObj((prev) => ({
+            ...prev,
+            media_type: assetTagsParam,
+        }));
+    }, [search]);
 
     const banner = user?.banner;
 
@@ -64,21 +80,51 @@ const Profile = () => {
     return (
         <>
             <Banner banner={banner} />
-            <Container maxWidth="xl">
-                <Box display={{ xs: 'block', md: 'none' }}>
-                    <ProfileTopMobile username={username} user={user} />
-                </Box>
-                <div className="profile-content">
-                    <Sidebar username={username} user={user} />
+            <div className="profile-page">
+                <Container maxWidth="lg" className="profile-page-container">
+                    <div className="profile-content">
+                        <ProfileAvatar username={username} user={user} />
+                    </div>
                     <AssetsFromWallet.Provider value={assetsInWallet}>
-                        <ProfileTabs
-                            username={username}
-                            type={profileTabesType?.type}
-                            tabNumber={profileTabesType?.tabNumber}
-                        />
+                        <div className="filter-collection">
+                            <FilterTab
+                                viewMode={viewMode}
+                                openFilterBtnLabel="Filter"
+                                isOpenFilter={drawerOpen}
+                                handleOpenFilter={(e) => setDrawerOpen(e)}
+                                handleViewMode={setViewMode}
+                                hasListView={isMyProfile}
+                                dashboardPage
+                            />
+                        </div>
+                        <ProfileCollections viewMode={viewMode} filters={filterObj} />
+                        <SidePanel
+                            open={drawerOpen}
+                            handleClose={() => setDrawerOpen(false)}
+                            closeButtonLabel="Filters"
+                        >
+                            <DrawerList
+                                setFilterObj={setFilterObj}
+                                filterObj={filterObj}
+                                dashboardPage
+                            />
+                        </SidePanel>
                     </AssetsFromWallet.Provider>
-                </div>
-            </Container>
+                    {/*<Box display={{ xs: 'block', md: 'none' }}>*/}
+                    {/*    <ProfileTopMobile username={username} user={user} />*/}
+                    {/*</Box>*/}
+                    {/*<div className="profile-content">*/}
+                    {/*    <Sidebar username={username} user={user} />*/}
+                    {/*    <AssetsFromWallet.Provider value={assetsInWallet}>*/}
+                    {/*        <ProfileTabs*/}
+                    {/*            username={username}*/}
+                    {/*            type={profileTabesType?.type}*/}
+                    {/*            tabNumber={profileTabesType?.tabNumber}*/}
+                    {/*        />*/}
+                    {/*    </AssetsFromWallet.Provider>*/}
+                    {/*</div>*/}
+                </Container>
+            </div>
         </>
     );
 };

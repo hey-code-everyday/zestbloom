@@ -31,8 +31,14 @@ const Products = () => {
     };
 
     return (
-        <Container maxWidth="xl" className="desktop-only home-products">
-            <Box display="flex" position="relative" alignItems="center" justifyContent="center">
+        <Container maxWidth="xl" className="home-products">
+            <Box
+                display="flex"
+                position="relative"
+                alignItems="center"
+                justifyContent="center"
+                flexWrap="wrap"
+            >
                 {assetTags?.map((item, index) => (
                     <Box
                         key={`${item.link}-${index}`}

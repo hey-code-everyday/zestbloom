@@ -1,158 +1,128 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Typography, FormControl, Box, Button, InputAdornment, TextField } from '@material-ui/core';
-import { Search } from '@material-ui/icons';
-import { useHistory } from 'react-router';
-import { getRandomAssetsForMarketPlace } from 'redux/marketplace/actions';
-import axios from 'axios';
-import AssetFilter from './assets';
-import PeopleFilter from './people';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-const DrawerList = ({
-    setFilterObj,
-    filterObj,
-    setSortAssets,
-    sortAssets,
-    setSortPeople,
-    sortPeople,
-    setSortPeopleByRole,
-    sortPeopleByRole,
-    filterAssetsByTag,
-    setFilterAssetsByTag,
-    filterPeopleByTag,
-    setFilterPeopleByTag,
-    viewType,
-    setSearchValueAsset,
-    setSearchValuePeople,
-    setSearchValue,
-}) => {
-    const history = useHistory();
-    const dispatch = useDispatch();
-    const [value, setValue] = useState('');
+import { Typography, Box } from '@material-ui/core';
 
-    const search = (event) => {
-        if (event.keyCode === 13) {
-            event.stopPropagation();
-            return event.preventDefault();
-        }
+import { FILTER_CONFIG } from 'configs';
+import AssetTagFilter from 'components/elements/marketplace/AssetTagFilter';
 
-        if (!viewType) {
-            setSearchValueAsset(value);
-            setSearchValuePeople(value);
+const DrawerList = ({ setFilterObj, filterObj, dashboardPage }) => {
+    const pushOrDeleteValue = (key, value) => {
+        if (value === 'ALL') {
+            const selectedFilter = checkboxItems.find((f) => f.filtered_type === key);
+            setFilterObj((prev) => ({
+                ...prev,
+                [key]: selectedFilter ? selectedFilter.filtered_items.map((f) => f.value) : [],
+            }));
+        } else if (value instanceof Array || key === 'duration') {
+            setFilterObj((prev) => ({
+                ...prev,
+                [key]: value,
+            }));
         } else {
-            setSearchValue(value);
+            setFilterObj((prev) => ({
+                ...prev,
+                [key]: prev[key].includes(value)
+                    ? prev[key].filter((x) => x !== value)
+                    : [...prev[key], value],
+            }));
         }
     };
 
-    const handleChange = (e) => {
-        setValue(e.target.value);
-    };
+    const checkboxItems = [
+        {
+            title: 'Asset Quantity',
+            filtered_type: 'type',
+            filtered_items: FILTER_CONFIG.type,
+            filterObj,
+            pushOrDeleteValue,
+        },
+        {
+            title: 'Sale Type',
+            filtered_type: 'status',
+            filtered_items: FILTER_CONFIG.status,
+            filterObj,
+            pushOrDeleteValue,
+        },
+        {
+            title: 'Category',
+            filtered_type: 'category',
+            filtered_items: FILTER_CONFIG.category,
+            filterObj,
+            pushOrDeleteValue,
+        },
+        {
+            title: 'Price',
+            filtered_type: 'price',
+            filtered_items: FILTER_CONFIG.price_sidebar,
+            filterObj,
+            pushOrDeleteValue,
+        },
+    ];
 
-    const onClickBtn = (key) => {
-        if (key === viewType) {
-            history.push('/marketplace');
-        } else {
-            history.push(`/marketplace?type=${key}`);
-        }
-    };
-
-    const randomSearch = () => {
-        const currentRequest = axios.CancelToken.source();
-        dispatch(getRandomAssetsForMarketPlace(currentRequest));
-    };
+    const isActiveFilter = (filterKey, value) =>
+        !!filterObj[filterKey] && filterObj[filterKey].includes(value);
 
     return (
-        <div style={{ padding: '2rem' }}>
-            <div className="filter-search">
-                <FormControl variant="outlined">
-                    <TextField
-                        placeholder="Search"
-                        variant="outlined"
-                        onChange={handleChange}
-                        onKeyUp={search}
-                        value={value}
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    {' '}
-                                    <Search color="disabled" />
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                </FormControl>
-                <Box component="span" m={1} className="filter-search-btns">
-                    <Button variant="contained" color="primary" onClick={randomSearch}>
-                        Random
-                    </Button>
+        <Box px={1} py={2}>
+            <Box my={1}>
+                <Typography variant="h5">NFT types</Typography>
+                <Box
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="start"
+                    flexWrap="wrap"
+                    mt={1}
+                >
+                    <AssetTagFilter dashboardPage={dashboardPage} />
                 </Box>
-            </div>
-            <Box component="span" m={10} className="sidebar-search-btns">
-                <Button
-                    variant="outlined"
-                    color="secondary"
-                    onClick={() => onClickBtn('assets')}
-                    style={viewType === 'assets' ? { background: 'black', color: 'white' } : {}}
-                >
-                    Assets
-                </Button>
-                <Button
-                    variant="outlined"
-                    onClick={() => onClickBtn('people')}
-                    style={viewType === 'people' ? { background: 'black', color: 'white' } : {}}
-                >
-                    People
-                </Button>
             </Box>
-            {viewType && (
-                <div style={{ paddingTop: '2rem' }}>
-                    <Typography variant="h2">Search Marketplace</Typography>
-                </div>
-            )}
-            <div style={{ width: '30rem' }}>
-                {viewType === 'assets' && (
-                    <AssetFilter
-                        setFilterObj={setFilterObj}
-                        filterObj={filterObj}
-                        setSortAssets={setSortAssets}
-                        sortAssets={sortAssets}
-                        filterAssetsByTag={filterAssetsByTag}
-                        setFilterAssetsByTag={setFilterAssetsByTag}
-                    />
-                )}
-                {viewType === 'people' && (
-                    <PeopleFilter
-                        setSortPeople={setSortPeople}
-                        sortPeople={sortPeople}
-                        setSortPeopleByRole={setSortPeopleByRole}
-                        sortPeopleByRole={sortPeopleByRole}
-                        filterPeopleByTag={filterPeopleByTag}
-                        setFilterPeopleByTag={setFilterPeopleByTag}
-                    />
-                )}
-            </div>
-        </div>
+
+            {checkboxItems.map((filter, index) => (
+                <Box my={1} key={index}>
+                    <Typography variant="h5">{filter.title}</Typography>
+                    <Box
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="start"
+                        flexWrap="wrap"
+                        mt={1}
+                    >
+                        <button
+                            className={`whiteBtnHoverGreen ${
+                                filterObj[filter.filtered_type].length ===
+                                filter.filtered_items.length
+                                    ? 'whiteBtnHoverGreen-selected'
+                                    : ''
+                            }`}
+                            onClick={() => pushOrDeleteValue(filter.filtered_type, 'ALL')}
+                        >
+                            <span className="text">All</span>
+                        </button>
+                        {filter.filtered_items.map((item, i) => (
+                            <button
+                                className={`whiteBtnHoverGreen ${
+                                    isActiveFilter(filter.filtered_type, item.value)
+                                        ? 'whiteBtnHoverGreen-selected'
+                                        : ''
+                                } mx-1`}
+                                onClick={() => pushOrDeleteValue(filter.filtered_type, item.value)}
+                                key={`item-${filter.filtered_type}-${i}`}
+                            >
+                                {item.display}
+                            </button>
+                        ))}
+                    </Box>
+                </Box>
+            ))}
+        </Box>
     );
 };
 
 DrawerList.propTypes = {
-    sortAssets: PropTypes.string,
-    sortPeople: PropTypes.string,
-    viewType: PropTypes.string,
-    sortPeopleByRole: PropTypes.string,
     filterObj: PropTypes.object,
-    filterAssetsByTag: PropTypes.array,
-    filterPeopleByTag: PropTypes.array,
     setFilterObj: PropTypes.func,
-    setSortAssets: PropTypes.func,
-    setSortPeople: PropTypes.func,
-    setSortPeopleByRole: PropTypes.func,
-    setFilterAssetsByTag: PropTypes.func,
-    setFilterPeopleByTag: PropTypes.func,
-    setSearchValueAsset: PropTypes.func,
-    setSearchValuePeople: PropTypes.func,
-    setSearchValue: PropTypes.func,
+    dashboardPage: PropTypes.bool,
 };
 
 export default DrawerList;

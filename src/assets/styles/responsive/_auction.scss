@@ -158,4 +158,12 @@
       margin: 0 16px;
     }
   }
+  .button-tag {
+    .icon {
+      margin: 0;
+    }
+    .text {
+      display: none;
+    }
+  }
 }

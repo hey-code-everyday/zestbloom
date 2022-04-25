@@ -22,6 +22,8 @@ import Slider from 'components/shared/slider';
 import { FILTER_CONFIG } from 'configs';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import AssetGridCard from '../../../components/elements/cards/AssetGridCard';
 
 const Assets = ({
     title,
@@ -34,6 +36,7 @@ const Assets = ({
     category,
     assetsInWallet,
     afterMakeAnOffer,
+    viewMode,
 }) => {
     const dispatch = useDispatch();
     const { marketplaceAssets, getMarketplaceAssetsLoading, loadMoreMarkURL, loadMoreLoading } =
@@ -42,6 +45,7 @@ const Assets = ({
     const [filterPath, setFilterPath] = useState(null);
 
     const getAssetsFilter = useCallback(() => {
+        console.log(filterAssetsByTag);
         const filter = getFilteredAssetElements(
             filterObj,
             sortAssets,
@@ -98,7 +102,7 @@ const Assets = ({
             <Grid item xs={12}>
                 <Typography
                     variant="h3"
-                    className="text-capitalize mt-5 marketplace-section-title font-primary"
+                    className="text-capitalize mt-5 mb-4 marketplace-section-title font-primary"
                 >
                     {title}
                 </Typography>
@@ -152,25 +156,55 @@ const Assets = ({
                     </Slider>
                 </Grid>
             ) : (
-                <Grid item xs={12} className="assetsGrid">
-                    {assets?.map((item) => (
-                        <AssetCard
-                            key={item.guid}
-                            item={item}
-                            upvoteAsset={upvoteAsset}
-                            unUpvoteAsset={unUpvoteAsset}
-                            toFavoritesAssets={toFavoritesAssets}
-                            removeFromFavoritesAssets={removeFromFavoritesAssets}
-                            isLoggedIn={isLoggedIn}
-                            changeAssetVisibility={changeMarketplaceAssetVisibility}
-                            assetsInWallet={assetsInWallet}
-                            updateAsset={placeABidAction}
-                            buyNowSuccess={buyNowSuccess}
-                            afterMakeAnOffer={afterMakeAnOffer}
-                            deleteAssetFromReducer={deleteAssetFromReducer}
-                        />
-                    ))}
-                </Grid>
+                <>
+                    {viewMode === 'tile' ? (
+                        <ResponsiveMasonry
+                            style={{ width: '100%' }}
+                            columnsCountBreakPoints={{ 350: 1, 600: 2, 900: 3, 1200: 4 }}
+                        >
+                            <Masonry gutter="10px" style={{ margin: '32px auto' }}>
+                                {assets?.map((item) => (
+                                    <AssetCard
+                                        key={item?.guid}
+                                        item={item}
+                                        upvoteAsset={upvoteAsset}
+                                        unUpvoteAsset={unUpvoteAsset}
+                                        toFavoritesAssets={toFavoritesAssets}
+                                        removeFromFavoritesAssets={removeFromFavoritesAssets}
+                                        isLoggedIn={isLoggedIn}
+                                        changeAssetVisibility={changeMarketplaceAssetVisibility}
+                                        assetsInWallet={assetsInWallet}
+                                        updateAsset={placeABidAction}
+                                        buyNowSuccess={buyNowSuccess}
+                                        afterMakeAnOffer={afterMakeAnOffer}
+                                        deleteAssetFromReducer={deleteAssetFromReducer}
+                                        galleryMode
+                                    />
+                                ))}
+                            </Masonry>
+                        </ResponsiveMasonry>
+                    ) : (
+                        <>
+                            {assets?.map((item) => (
+                                <Grid
+                                    item
+                                    xs={12}
+                                    sm={6}
+                                    md={4}
+                                    lg={3}
+                                    key={item.guid}
+                                    style={{
+                                        padding: 16,
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                    }}
+                                >
+                                    <AssetGridCard item={item} />
+                                </Grid>
+                            ))}
+                        </>
+                    )}
+                </>
             )}
 
             <Grid item xs={12}>
@@ -203,6 +237,7 @@ Assets.propTypes = {
     category: PropTypes.string,
     assetsInWallet: PropTypes.array,
     afterMakeAnOffer: PropTypes.func,
+    viewMode: PropTypes.string,
 };
 
 export default Assets;
